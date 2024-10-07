@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bldt30nysl8rc"]
+
+[ext_resource type="Texture2D" uid="uid://dmvq8o4alkkrg" path="res://assets/sky_360.hdr" id="1_ednwy"]
+[ext_resource type="PackedScene" uid="uid://b3osvs3sjedqd" path="res://player.tscn" id="1_thvoc"]
+[ext_resource type="PackedScene" uid="uid://d0t03g5px0cmc" path="res://road.tscn" id="2_jnr75"]
+[ext_resource type="PackedScene" uid="uid://dyeivg0rkvi8q" path="res://road_piece.tscn" id="3_vice7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_egl0l"]
+panorama = ExtResource("1_ednwy")
+
+[sub_resource type="Sky" id="Sky_p0ee3"]
+sky_material = SubResource("PanoramaSkyMaterial_egl0l")
+
+[sub_resource type="Environment" id="Environment_se8kp"]
+background_mode = 2
+sky = SubResource("Sky_p0ee3")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_se8kp")
+
+[node name="PlayerCar" parent="." instance=ExtResource("1_thvoc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.152795, 1.87671)
+
+[node name="Road" parent="." instance=ExtResource("2_jnr75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+road_instance = ExtResource("3_vice7")
+
+[node name="Start" type="Node3D" parent="."]
+
+[node name="Node3D" parent="Start" instance=ExtResource("3_vice7")]
+
+[node name="NpcCar3" parent="Start/Node3D/CSGBox3D" index="7"]
+car_chance = 0.0
+
+[node name="NpcCar4" parent="Start/Node3D/CSGBox3D" index="8"]
+car_chance = 0.0
+
+[node name="Node3D2" parent="Start" instance=ExtResource("3_vice7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="NpcCar3" parent="Start/Node3D2/CSGBox3D" index="7"]
+car_chance = 0.0
+
+[node name="NpcCar4" parent="Start/Node3D2/CSGBox3D" index="8"]
+car_chance = 0.0
+
+[node name="Node3D3" parent="Start" instance=ExtResource("3_vice7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="NpcCar3" parent="Start/Node3D3/CSGBox3D" index="7"]
+car_chance = 0.0
+
+[node name="NpcCar4" parent="Start/Node3D3/CSGBox3D" index="8"]
+car_chance = 0.0
+
+[editable path="Start/Node3D"]
+[editable path="Start/Node3D2"]
+[editable path="Start/Node3D3"]

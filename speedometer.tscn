@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://spwihbba35yp"]
+
+[ext_resource type="Texture2D" uid="uid://crh8kh2eth1qo" path="res://assets/speedometer.png" id="1_onjh5"]
+[ext_resource type="Texture2D" uid="uid://dqxdr0ppf242q" path="res://assets/needle.png" id="2_3fimg"]
+[ext_resource type="Script" path="res://speedometer.gd" id="2_tylke"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_725fm"]
+font_size = 60
+outline_size = 15
+outline_color = Color(0, 0.256276, 0.569074, 1)
+shadow_size = 20
+shadow_color = Color(1, 1, 1, 0.129412)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsu5i"]
+font_size = 20
+outline_size = 15
+outline_color = Color(0, 0.256276, 0.569074, 1)
+
+[node name="Speedometer" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = -256.0
+offset_right = 257.5
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_onjh5")
+script = ExtResource("2_tylke")
+
+[node name="Needle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = -256.0
+offset_right = 254.5
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.36318
+pivot_offset = Vector2(257, 257)
+texture = ExtResource("2_3fimg")
+
+[node name="kmh_value" type="Label" parent="."]
+layout_mode = 0
+offset_left = 203.5
+offset_top = 362.0
+offset_right = 306.5
+offset_bottom = 445.0
+text = "180"
+label_settings = SubResource("LabelSettings_725fm")
+horizontal_alignment = 1
+
+[node name="kmh_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 207.5
+offset_top = 436.0
+offset_right = 310.5
+offset_bottom = 519.0
+text = "km/h"
+label_settings = SubResource("LabelSettings_lsu5i")
+horizontal_alignment = 1

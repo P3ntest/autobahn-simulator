@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://dtgqhlvi0wlu7"]
+
+[ext_resource type="Script" path="res://npc_car.gd" id="1_f6k1q"]
+[ext_resource type="PackedScene" uid="uid://nrtxmpa6sm4t" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Ambulance/Ambulance.fbx" id="2_e4vh8"]
+[ext_resource type="PackedScene" uid="uid://c47fisbbiog3m" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Hatchback/Hatchback.fbx" id="3_uh0p4"]
+[ext_resource type="PackedScene" uid="uid://bh6n567q160hb" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Pickup/Pickup.fbx" id="4_i7o03"]
+[ext_resource type="PackedScene" uid="uid://b16ddp7vw8314" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Bus/Bus.fbx" id="5_cn0ip"]
+[ext_resource type="PackedScene" uid="uid://dxbkxph1ie6h2" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Firetruck/Firetruck.fbx" id="6_a4dxh"]
+[ext_resource type="Script" path="res://blue_light.gd" id="7_2gfro"]
+[ext_resource type="PackedScene" uid="uid://br13ygrtamr00" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Limousine/Limousine.fbx" id="8_yxiib"]
+[ext_resource type="PackedScene" uid="uid://b384s6ayvjy5y" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Monster Truck/Monster Truck.fbx" id="9_7jicg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ucu1"]
+size = Vector3(2.46638, 2.84279, 5.89783)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2800"]
+size = Vector3(2.24165, 2.00718, 5.03095)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3cqwd"]
+size = Vector3(2.29084, 2.20351, 5.07209)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rgqu"]
+size = Vector3(3.23076, 4.08669, 13.3428)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f20bg"]
+size = Vector3(2.82777, 3.64021, 9.36306)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq60d"]
+size = Vector3(2.24057, 1.98698, 10.266)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tar3h"]
+size = Vector3(4.25257, 3.18184, 5.38999)
+
+[node name="NpcCar" type="CharacterBody3D"]
+script = ExtResource("1_f6k1q")
+
+[node name="Variants" type="Node3D" parent="."]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
+
+[node name="Ambulance" parent="Variants" instance=ExtResource("2_e4vh8")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Ambulance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00689065, 1.41626, -0.303104)
+shape = SubResource("BoxShape3D_3ucu1")
+
+[node name="Hatchback" parent="Variants" instance=ExtResource("3_uh0p4")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Hatchback"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00450289, 1.00893, 0.0991244)
+shape = SubResource("BoxShape3D_g2800")
+
+[node name="Pickup" parent="Variants" instance=ExtResource("4_i7o03")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Pickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0036329, 1.10667, 0.0991855)
+shape = SubResource("BoxShape3D_3cqwd")
+
+[node name="Bus" parent="Variants" instance=ExtResource("5_cn0ip")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Bus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00704753, 2.02255, -0.0891004)
+shape = SubResource("BoxShape3D_3rgqu")
+
+[node name="Firetruck" parent="Variants" instance=ExtResource("6_a4dxh")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Firetruck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00148702, 1.83134, 0.0668578)
+shape = SubResource("BoxShape3D_f20bg")
+
+[node name="BlueLight" type="OmniLight3D" parent="Variants/Firetruck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679556, 3.33515, 3.43457)
+light_color = Color(0.224177, 0.361756, 0.981336, 1)
+light_energy = 20.0
+light_size = 1.0
+script = ExtResource("7_2gfro")
+offset = true
+
+[node name="BlueLight2" type="OmniLight3D" parent="Variants/Firetruck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636589, 3.33515, 3.43457)
+light_color = Color(0.224177, 0.361756, 0.981336, 1)
+light_energy = 20.0
+light_size = 1.0
+script = ExtResource("7_2gfro")
+
+[node name="Limousine" parent="Variants" instance=ExtResource("8_yxiib")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Limousine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00607839, 1.00472, 0.518328)
+shape = SubResource("BoxShape3D_aq60d")
+
+[node name="Monster Truck" parent="Variants" instance=ExtResource("9_7jicg")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Monster Truck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301246, 1.60216, 0.0868575)
+shape = SubResource("BoxShape3D_tar3h")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
