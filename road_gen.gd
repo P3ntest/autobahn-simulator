@@ -7,7 +7,7 @@ class_name RoadGen
 func _piece_passed() -> void:
 	spawn_next_piece()
 
-var starting_length = 30
+var starting_length = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +25,7 @@ func spawn_next_piece() -> void:
 	total_pieces += 1
 	current_last_index += 1
 
-	if total_pieces > starting_length + 100:
+	if total_pieces > starting_length + 1:
 		print("deleting")
 		var children = get_children()
 		children[0].queue_free()

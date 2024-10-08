@@ -11,9 +11,9 @@ func _on_sensor_passed(node: Node3D):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var cars = $Cars
+	for i in cars.get_children():
+		var old_global_transform = i.global_transform
+		$Cars.remove_child(i)
+		get_tree().get_first_node_in_group("CarHolder").add_child(i)
+		i.global_transform = old_global_transform

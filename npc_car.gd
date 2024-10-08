@@ -66,4 +66,9 @@ func _process(delta: float) -> void:
 				$Headlights.visible = !$Headlights.visible
 		else:
 			$Headlights.visible = false
+	
+	var player = get_tree().get_first_node_in_group("Player")
+	var player_delta = player.global_transform.origin.x - global_transform.origin.x
+	if player_delta > 40:
+		queue_free()	
 

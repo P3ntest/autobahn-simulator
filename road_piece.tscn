@@ -19,7 +19,6 @@ metallic_specular = 1.0
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171764, 0.0147295, 0.0275593)
 script = ExtResource("1_r4nvu")
-piece_nr = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
@@ -90,27 +89,6 @@ size = Vector3(2, 0.11, 0.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="NpcCar" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.30847, 0.0500007, -2.06249)
-car_chance = 0.15
-is_opposite = true
-speed = 30
-
-[node name="NpcCar2" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.32964, 0.0500007, -5.99377)
-is_opposite = true
-speed = 25
-
-[node name="NpcCar3" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.7352, 0.0500007, 1.99018)
-car_chance = 0.15
-speed = 30
-
-[node name="NpcCar4" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61476, 0.0500007, 5.92832)
-car_chance = 0.2
-speed = 25
-
 [node name="guardrail2m3" parent="CSGBox3D" instance=ExtResource("3_5hfpt")]
 transform = Transform3D(-2, 0, 1.50996e-07, 0, 1, 0, -3.01992e-07, 0, -1, 0, -0.509934, 8.97125)
 
@@ -128,5 +106,28 @@ shape = SubResource("BoxShape3D_dfp7x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.485296, 0)
 material_override = SubResource("StandardMaterial3D_4mq0g")
 size = Vector3(20, 1, 200)
+
+[node name="Cars" type="Node3D" parent="."]
+
+[node name="NpcCar" parent="Cars" instance=ExtResource("1_qsys5")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.30847, 0.0500007, -2.06249)
+car_chance = 0.15
+is_opposite = true
+speed = 30
+
+[node name="NpcCar2" parent="Cars" instance=ExtResource("1_qsys5")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.32964, 0.0500007, -5.99377)
+is_opposite = true
+speed = 25
+
+[node name="NpcCar3" parent="Cars" instance=ExtResource("1_qsys5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.7352, 0.0500007, 1.99018)
+car_chance = 0.15
+speed = 30
+
+[node name="NpcCar4" parent="Cars" instance=ExtResource("1_qsys5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61476, 0.0500007, 5.92832)
+car_chance = 0.2
+speed = 25
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_sensor_passed"]
