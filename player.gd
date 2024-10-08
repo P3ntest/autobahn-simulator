@@ -16,6 +16,7 @@ extends CharacterBody3D
 
 @onready var break_lights: Node3D = $BreakLights
 
+var started = false
 
 # Stats
 var highest_speed = 0
@@ -34,6 +35,8 @@ var dead = false
 var target_engine_pitch = 1.0
 var target_engine_volume = 1.0
 
+func start():
+	started = true
 
 func _physics_process(delta: float) -> void:
 	if (dead):
@@ -46,9 +49,12 @@ func _physics_process(delta: float) -> void:
 	var acceleration_power = 1300 / (current_speed + 300)
 	var breaking_power = 10
 
-	var default_decay = current_speed * 0.03
+	var default_decay = current_speed * 0.03 if started else 0
 
 	var velocity_delta = (Input.get_action_strength("accelerate") * acceleration_power + Input.get_action_strength("brake") * -breaking_power - default_decay) * delta
+
+	if not started and velocity_delta > 0:
+		start()
 
 	target_engine_pitch = .4 + max(velocity_delta, 0) * 1.2 + current_speed * 0.03
 	target_engine_volume = 1 + current_speed * 0.01
