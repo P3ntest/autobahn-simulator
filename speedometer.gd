@@ -20,4 +20,4 @@ func _set_speed(speed: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	needle.rotation_degrees = lerp(needle.rotation_degrees, target_rotation + base_rotation, 4 * delta)
-	label.text = str(round(current_speed))
+	label.text = str(ceil(current_speed))

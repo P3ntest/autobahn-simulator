@@ -46,6 +46,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -2.36318
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(257, 257)
 texture = ExtResource("2_3fimg")
 

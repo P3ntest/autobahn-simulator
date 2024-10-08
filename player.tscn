@@ -1,10 +1,15 @@
-[gd_scene load_steps=25 format=4 uid="uid://b3osvs3sjedqd"]
+[gd_scene load_steps=33 format=4 uid="uid://b3osvs3sjedqd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_re1pj"]
+[ext_resource type="PackedScene" uid="uid://citsii4cnewns" path="res://prefabs/decal.tscn" id="2_jc0ud"]
 [ext_resource type="PackedScene" uid="uid://spwihbba35yp" path="res://speedometer.tscn" id="2_ny632"]
+[ext_resource type="AudioStream" uid="uid://c71qb342mebb8" path="res://assets/engine-6000.wav" id="4_wr6na"]
+[ext_resource type="AudioStream" uid="uid://cvwfygygc8dnp" path="res://assets/braking.wav" id="5_hkyhv"]
+[ext_resource type="AudioStream" uid="uid://bc5fdf5xa0js1" path="res://assets/crash.wav" id="6_a2w1h"]
+[ext_resource type="AudioStream" uid="uid://bejor7lmdxky8" path="res://assets/swoosh.wav" id="7_prw3r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bftrm"]
-size = Vector3(2.03619, 1.38913, 4.63921)
+size = Vector3(1.9084, 1.38913, 3.80732)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usrb7"]
 resource_name = "body blue"
@@ -447,17 +452,27 @@ shadow_mesh = SubResource("ArrayMesh_yu5y6")
 size = Vector3(2.33063, 1.42273, 5.50348)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qb1c2"]
-size = Vector3(2.03619, 1.38913, 5.31679)
+size = Vector3(1.95169, 1.38913, 4.14262)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ef7s5"]
+size = Vector3(2.55, 1.389, 5.783)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3lbg"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_daclg"]
+font_size = 80
 
 [node name="PlayerCar" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_re1pj")
+break_decal = ExtResource("2_jc0ud")
 
 [node name="PhysicsCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00161646, 1.11586, 0.196902)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00432535, 1.11586, -1.887)
 shape = SubResource("BoxShape3D_bftrm")
 
 [node name="Roadster" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.9, 0, -1.35896e-07, 0, 0.9, 0, 1.35896e-07, 0, -0.9, 0, 0, -2.26569)
 
 [node name="Roadster" type="MeshInstance3D" parent="Roadster"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0.6, 0)
@@ -491,42 +506,126 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0024
 shape = SubResource("BoxShape3D_vfqqb")
 
 [node name="CamPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.927608, 0.373554, 0, -0.373554, 0.927608, 0, 4.47249, 11.8489)
+transform = Transform3D(1, 0, 0, 0, 0.909904, 0.41482, 0, -0.41482, 0.909904, 0, 5.05911, 9.16143)
 
 [node name="BreakLights" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="BreakLights"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.811209, 1.08918, 2.70275)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.811209, 1.08918, 2.50349)
 light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
 omni_range = 0.381
 omni_attenuation = 2.143
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="BreakLights"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.811, 1.089, 2.703)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.811, 1.089, 2.50374)
 light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
 omni_range = 0.381
 omni_attenuation = 2.143
 
-[node name="CollisionDetector" type="Area3D" parent="."]
+[node name="CollisionDetector" type="Area3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionDetector"]
-transform = Transform3D(-1.02, 0, -1.54016e-07, 0, 1.02, 0, 1.54016e-07, 0, -1.02, -1.14016e-08, 0.683282, -0.00998926)
+transform = Transform3D(-1.02, 0, -1.54016e-07, 0, 1.02, 0, 1.54016e-07, 0, -1.02, -0.000975629, 0.683282, 0.299354)
 shape = SubResource("BoxShape3D_qb1c2")
+
+[node name="CloseDetector" type="Area3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CloseDetector"]
+transform = Transform3D(-1.02, 0, -1.54016e-07, 0, 1.02, 0, 1.54016e-07, 0, -1.02, -0.000975677, 0.683282, -0.0203536)
+shape = SubResource("BoxShape3D_ef7s5")
 
 [node name="Speedometer" parent="." instance=ExtResource("2_ny632")]
 custom_minimum_size = Vector2(400, 400)
-anchors_preset = 7
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -252.0
-offset_top = -516.0
-offset_right = 263.0
-offset_bottom = -4.0
+offset_left = -515.0
+offset_top = -512.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_vertical = 8
 expand_mode = 2
 
+[node name="DeathScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -37.5
+offset_right = 86.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Died
+
+Press Space to Restart"
+label_settings = SubResource("LabelSettings_o3lbg")
+horizontal_alignment = 1
+
+[node name="DecalSpawners" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0633126, -2.26569)
+
+[node name="Marker3D" type="Marker3D" parent="DecalSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86552, -0.0355816, -1.38651)
+
+[node name="Marker3D2" type="Marker3D" parent="DecalSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.911737, -0.0355816, -1.44954)
+
+[node name="Marker3D3" type="Marker3D" parent="DecalSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86552, -0.0355816, 1.51256)
+
+[node name="Marker3D4" type="Marker3D" parent="DecalSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.911737, -0.0355816, 1.44954)
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wr6na")
+
+[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hkyhv")
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a2w1h")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425446, 1.23169, -2.26569)
+current = true
+
+[node name="SwooshSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_prw3r")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 19.0
+offset_right = 67.0
+offset_bottom = 42.0
+label_settings = SubResource("LabelSettings_daclg")
+
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]
+[connection signal="body_exited" from="CloseDetector" to="." method="_on_close_detector_body_exited"]

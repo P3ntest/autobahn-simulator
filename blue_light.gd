@@ -12,5 +12,4 @@ func _process(delta: float) -> void:
 	if time_passed > PERIOD:
 		time_passed = 0.0
 		offset = !offset
-		print("offset: ", offset)
 		self.visible = offset

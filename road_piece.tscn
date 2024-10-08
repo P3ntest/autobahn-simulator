@@ -1,21 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyeivg0rkvi8q"]
+[gd_scene load_steps=7 format=3 uid="uid://dyeivg0rkvi8q"]
 
 [ext_resource type="PackedScene" uid="uid://dtgqhlvi0wlu7" path="res://npc_car.tscn" id="1_qsys5"]
 [ext_resource type="Script" path="res://road_piece.gd" id="1_r4nvu"]
+[ext_resource type="PackedScene" uid="uid://cbut14ffgymjf" path="res://level/guardrail.tscn" id="3_5hfpt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iij35"]
 albedo_color = Color(0.321569, 0.317647, 0.337255, 1)
+metallic = 0.47
+roughness = 0.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfp7x"]
 size = Vector3(1, 10, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mq0g"]
+albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
+metallic_specular = 1.0
+
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171764, 0.0147295, 0.0275593)
 script = ExtResource("1_r4nvu")
 piece_nr = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
-size = Vector3(20, 0.1, 15)
+size = Vector3(20, 0.1, 18)
 material = SubResource("StandardMaterial3D_iij35")
 
 [node name="Middle2" type="Node3D" parent="CSGBox3D"]
@@ -29,15 +37,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 size = Vector3(20, 0.11, 0.25)
 
 [node name="Outer" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 size = Vector3(20, 0.11, 0.3)
 
 [node name="Outer2" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 size = Vector3(20, 0.11, 0.3)
 
 [node name="Divider" type="Node3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
 
 [node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -60,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
 [node name="Divider2" type="Node3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40985, 0, 3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41, 0, 4)
 
 [node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -83,21 +91,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
 [node name="NpcCar" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.082305, 0.0500007, -1.81705)
-speed = 25
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.30847, 0.0500007, -2.06249)
+car_chance = 0.15
+is_opposite = true
+speed = 30
 
 [node name="NpcCar2" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.061139, 0.0500007, -5.63926)
-car_chance = 0.35
-speed = 16
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.32964, 0.0500007, -5.99377)
+is_opposite = true
+speed = 25
 
 [node name="NpcCar3" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.7352, 0.0500007, 1.79929)
-speed = 27
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.7352, 0.0500007, 1.99018)
+car_chance = 0.15
+speed = 30
 
 [node name="NpcCar4" parent="CSGBox3D" instance=ExtResource("1_qsys5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.72384, 0.0500007, 5.62835)
-car_chance = 0.3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61476, 0.0500007, 5.92832)
+car_chance = 0.2
+speed = 25
+
+[node name="guardrail2m3" parent="CSGBox3D" instance=ExtResource("3_5hfpt")]
+transform = Transform3D(-2, 0, 1.50996e-07, 0, 1, 0, -3.01992e-07, 0, -1, 0, -0.509934, 8.97125)
+
+[node name="guardrail2m4" parent="CSGBox3D" instance=ExtResource("3_5hfpt")]
+transform = Transform3D(-2, 0, 1.50996e-07, 0, 1, 0, -3.01992e-07, 0, -1, 0, -0.51, -8.971)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0154161, 0, -0.00862885)
@@ -105,5 +123,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0154161, 0, -0.00862885)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09837, 0)
 shape = SubResource("BoxShape3D_dfp7x")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.485296, 0)
+material_override = SubResource("StandardMaterial3D_4mq0g")
+size = Vector3(20, 1, 200)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_sensor_passed"]
