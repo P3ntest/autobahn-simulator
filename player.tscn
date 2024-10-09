@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bejor7lmdxky8" path="res://assets/swoosh.wav" id="7_prw3r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bftrm"]
-size = Vector3(1.9084, 1.38913, 3.61753)
+size = Vector3(1.5, 1.389, 2.903)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usrb7"]
 resource_name = "body blue"
@@ -468,7 +468,7 @@ script = ExtResource("1_re1pj")
 break_decal = ExtResource("2_jc0ud")
 
 [node name="PhysicsCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00432536, 1.11586, -1.9819)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00432539, 1.11586, -2.33941)
 shape = SubResource("BoxShape3D_bftrm")
 
 [node name="Roadster" type="Node3D" parent="."]
