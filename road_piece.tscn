@@ -105,7 +105,7 @@ shape = SubResource("BoxShape3D_dfp7x")
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.485296, 0)
 material_override = SubResource("StandardMaterial3D_4mq0g")
-size = Vector3(20, 1, 200)
+size = Vector3(21, 1, 200)
 
 [node name="Cars" type="Node3D" parent="."]
 

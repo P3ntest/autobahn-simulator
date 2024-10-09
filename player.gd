@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	var acceleration_power = 1300 / (current_speed + 300)
 	var breaking_power = 10
 
-	var default_decay = current_speed * 0.03 if started else 0
+	var default_decay = current_speed * 0.03 if started else 0.0
 
 	var velocity_delta = (Input.get_action_strength("accelerate") * acceleration_power + Input.get_action_strength("brake") * -breaking_power - default_decay) * delta
 
