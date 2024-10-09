@@ -452,10 +452,10 @@ shadow_mesh = SubResource("ArrayMesh_yu5y6")
 size = Vector3(2.33063, 1.42273, 5.50348)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qb1c2"]
-size = Vector3(1.95169, 1.38913, 4.14262)
+size = Vector3(1.9, 1.389, 3.677)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ef7s5"]
-size = Vector3(2.7, 1.389, 5.783)
+size = Vector3(3, 1.389, 5.783)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o3lbg"]
 font_size = 100
@@ -533,7 +533,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionDetector"]
-transform = Transform3D(-1.02, 0, -1.54016e-07, 0, 1.02, 0, 1.54016e-07, 0, -1.02, -0.000975629, 0.683282, 0.299354)
+transform = Transform3D(-1.02, 0, -1.54016e-07, 0, 1.02, 0, 1.54016e-07, 0, -1.02, -0.000975665, 0.683282, 0.061775)
 shape = SubResource("BoxShape3D_qb1c2")
 
 [node name="CloseDetector" type="Area3D" parent="." groups=["Player"]]
