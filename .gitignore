@@ -3,3 +3,6 @@
 /android/
 
 .build
+
+.dist
+!/.dist/.gdignore
