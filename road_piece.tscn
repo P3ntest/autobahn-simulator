@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyeivg0rkvi8q"]
+[gd_scene format=3 uid="uid://dyeivg0rkvi8q"]
 
 [ext_resource type="PackedScene" uid="uid://dtgqhlvi0wlu7" path="res://npc_car.tscn" id="1_qsys5"]
-[ext_resource type="Script" path="res://road_piece.gd" id="1_r4nvu"]
-[ext_resource type="PackedScene" uid="uid://cbut14ffgymjf" path="res://level/guardrail.tscn" id="3_5hfpt"]
+[ext_resource type="Script" uid="uid://b2dbw3wviogle" path="res://road_piece.gd" id="1_r4nvu"]
+[ext_resource type="PackedScene" uid="uid://jav60gqkkrea" path="res://prefabs/guardrail.tscn" id="3_w3y5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iij35"]
 albedo_color = Color(0.321569, 0.317647, 0.337255, 1)
@@ -16,118 +16,124 @@ size = Vector3(1, 10, 20)
 albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
 metallic_specular = 1.0
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1945420976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171764, 0.0147295, 0.0275593)
 script = ExtResource("1_r4nvu")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1253419598]
 use_collision = true
 size = Vector3(20, 0.1, 18)
 material = SubResource("StandardMaterial3D_iij35")
 
-[node name="Middle2" type="Node3D" parent="CSGBox3D"]
+[node name="Middle2" type="Node3D" parent="CSGBox3D" unique_id=761469338]
 
-[node name="Middle" type="CSGBox3D" parent="CSGBox3D/Middle2"]
+[node name="Middle" type="CSGBox3D" parent="CSGBox3D/Middle2" unique_id=1189551805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 size = Vector3(20, 0.11, 0.25)
 
-[node name="Middle2" type="CSGBox3D" parent="CSGBox3D/Middle2"]
+[node name="Middle2" type="CSGBox3D" parent="CSGBox3D/Middle2" unique_id=42004963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 size = Vector3(20, 0.11, 0.25)
 
-[node name="Outer" type="CSGBox3D" parent="CSGBox3D"]
+[node name="Outer" type="CSGBox3D" parent="CSGBox3D" unique_id=2058986312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 size = Vector3(20, 0.11, 0.3)
 
-[node name="Outer2" type="CSGBox3D" parent="CSGBox3D"]
+[node name="Outer2" type="CSGBox3D" parent="CSGBox3D" unique_id=793584854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 size = Vector3(20, 0.11, 0.3)
 
-[node name="Divider" type="Node3D" parent="CSGBox3D"]
+[node name="Divider" type="Node3D" parent="CSGBox3D" unique_id=2134426745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
 
-[node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider"]
+[node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider" unique_id=1517862136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider2" type="CSGBox3D" parent="CSGBox3D/Divider"]
+[node name="Divider2" type="CSGBox3D" parent="CSGBox3D/Divider" unique_id=2002145267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider3" type="CSGBox3D" parent="CSGBox3D/Divider"]
+[node name="Divider3" type="CSGBox3D" parent="CSGBox3D/Divider" unique_id=2118119769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider4" type="CSGBox3D" parent="CSGBox3D/Divider"]
+[node name="Divider4" type="CSGBox3D" parent="CSGBox3D/Divider" unique_id=839373298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider5" type="CSGBox3D" parent="CSGBox3D/Divider"]
+[node name="Divider5" type="CSGBox3D" parent="CSGBox3D/Divider" unique_id=344001383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider2" type="Node3D" parent="CSGBox3D"]
+[node name="Divider2" type="Node3D" parent="CSGBox3D" unique_id=1244860879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41, 0, 4)
 
-[node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider2"]
+[node name="Divider" type="CSGBox3D" parent="CSGBox3D/Divider2" unique_id=1513037150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider2" type="CSGBox3D" parent="CSGBox3D/Divider2"]
+[node name="Divider2" type="CSGBox3D" parent="CSGBox3D/Divider2" unique_id=1042524928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider3" type="CSGBox3D" parent="CSGBox3D/Divider2"]
+[node name="Divider3" type="CSGBox3D" parent="CSGBox3D/Divider2" unique_id=81458879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider4" type="CSGBox3D" parent="CSGBox3D/Divider2"]
+[node name="Divider4" type="CSGBox3D" parent="CSGBox3D/Divider2" unique_id=1179540567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="Divider5" type="CSGBox3D" parent="CSGBox3D/Divider2"]
+[node name="Divider5" type="CSGBox3D" parent="CSGBox3D/Divider2" unique_id=1585385946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 size = Vector3(2, 0.11, 0.25)
 
-[node name="guardrail2m3" parent="CSGBox3D" instance=ExtResource("3_5hfpt")]
-transform = Transform3D(-2, 0, 1.50996e-07, 0, 1, 0, -3.01992e-07, 0, -1, 0, -0.509934, 8.97125)
-
-[node name="guardrail2m4" parent="CSGBox3D" instance=ExtResource("3_5hfpt")]
-transform = Transform3D(-2, 0, 1.50996e-07, 0, 1, 0, -3.01992e-07, 0, -1, 0, -0.51, -8.971)
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=97615139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0154161, 0, -0.00862885)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1219675793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09837, 0)
 shape = SubResource("BoxShape3D_dfp7x")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=264636809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.485296, 0)
 material_override = SubResource("StandardMaterial3D_4mq0g")
 size = Vector3(21, 1, 200)
 
-[node name="Cars" type="Node3D" parent="."]
+[node name="Cars" type="Node3D" parent="." unique_id=366070399]
 
-[node name="NpcCar" parent="Cars" instance=ExtResource("1_qsys5")]
+[node name="NpcCar" parent="Cars" unique_id=792393923 instance=ExtResource("1_qsys5")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.30847, 0.0500007, -2.06249)
 car_chance = 0.15
 is_opposite = true
 speed = 30
 
-[node name="NpcCar2" parent="Cars" instance=ExtResource("1_qsys5")]
+[node name="NpcCar2" parent="Cars" unique_id=207266898 instance=ExtResource("1_qsys5")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.32964, 0.0500007, -5.99377)
 is_opposite = true
 speed = 25
 
-[node name="NpcCar3" parent="Cars" instance=ExtResource("1_qsys5")]
+[node name="NpcCar3" parent="Cars" unique_id=2129793448 instance=ExtResource("1_qsys5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.7352, 0.0500007, 1.99018)
 car_chance = 0.15
 speed = 30
 
-[node name="NpcCar4" parent="Cars" instance=ExtResource("1_qsys5")]
+[node name="NpcCar4" parent="Cars" unique_id=1278205375 instance=ExtResource("1_qsys5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61476, 0.0500007, 5.92832)
 car_chance = 0.2
 speed = 25
+
+[node name="Guardrail" parent="." unique_id=176108945 instance=ExtResource("3_w3y5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9)
+
+[node name="Guardrail2" parent="." unique_id=2098443411 instance=ExtResource("3_w3y5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
+
+[node name="Guardrail3" parent="." unique_id=20854367 instance=ExtResource("3_w3y5v")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, -5, 0, 8.999999)
+
+[node name="Guardrail4" parent="." unique_id=964052095 instance=ExtResource("3_w3y5v")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 5, 0, 9)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_sensor_passed"]

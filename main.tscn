@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bldt30nysl8rc"]
+[gd_scene format=3 uid="uid://bldt30nysl8rc"]
 
 [ext_resource type="PackedScene" uid="uid://b3osvs3sjedqd" path="res://player.tscn" id="1_thvoc"]
 [ext_resource type="PackedScene" uid="uid://d0t03g5px0cmc" path="res://road.tscn" id="2_jnr75"]
@@ -17,72 +17,72 @@ sky = SubResource("Sky_p0ee3")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1131190934]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=985353041]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=80578562]
 environment = SubResource("Environment_se8kp")
 
-[node name="PlayerCar" parent="." instance=ExtResource("1_thvoc")]
+[node name="PlayerCar" parent="." unique_id=1876250730 instance=ExtResource("1_thvoc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.152795, 1.87671)
 
-[node name="Road" parent="." instance=ExtResource("2_jnr75")]
+[node name="Road" parent="." unique_id=1326118140 instance=ExtResource("2_jnr75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 road_instance = ExtResource("3_vice7")
 
-[node name="Start" type="Node3D" parent="."]
+[node name="Start" type="Node3D" parent="." unique_id=684098729]
 
-[node name="Node3D" parent="Start" instance=ExtResource("3_vice7")]
+[node name="Node3D" parent="Start" unique_id=599404469 instance=ExtResource("3_vice7")]
 
-[node name="NpcCar" parent="Start/Node3D/Cars" index="0"]
+[node name="NpcCar" parent="Start/Node3D/Cars" parent_id_path=PackedInt32Array(599404469, 366070399) index="0" unique_id=792393923]
 car_chance = 1.0
 
-[node name="NpcCar2" parent="Start/Node3D/Cars" index="1"]
+[node name="NpcCar2" parent="Start/Node3D/Cars" parent_id_path=PackedInt32Array(599404469, 366070399) index="1" unique_id=207266898]
 car_chance = 1.0
 
-[node name="NpcCar3" parent="Start/Node3D/Cars" index="2"]
+[node name="NpcCar3" parent="Start/Node3D/Cars" parent_id_path=PackedInt32Array(599404469, 366070399) index="2" unique_id=2129793448]
 car_chance = 0.0
 
-[node name="NpcCar4" parent="Start/Node3D/Cars" index="3"]
+[node name="NpcCar4" parent="Start/Node3D/Cars" parent_id_path=PackedInt32Array(599404469, 366070399) index="3" unique_id=1278205375]
 car_chance = 1.0
 
-[node name="Node3D4" parent="Start" instance=ExtResource("3_vice7")]
+[node name="Node3D4" parent="Start" unique_id=1010307045 instance=ExtResource("3_vice7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
 
-[node name="NpcCar" parent="Start/Node3D4/Cars" index="0"]
+[node name="NpcCar" parent="Start/Node3D4/Cars" parent_id_path=PackedInt32Array(1010307045, 366070399) index="0" unique_id=792393923]
 car_chance = 1.0
 
-[node name="NpcCar2" parent="Start/Node3D4/Cars" index="1"]
+[node name="NpcCar2" parent="Start/Node3D4/Cars" parent_id_path=PackedInt32Array(1010307045, 366070399) index="1" unique_id=207266898]
 car_chance = 1.0
 
-[node name="NpcCar3" parent="Start/Node3D4/Cars" index="2"]
+[node name="NpcCar3" parent="Start/Node3D4/Cars" parent_id_path=PackedInt32Array(1010307045, 366070399) index="2" unique_id=2129793448]
 car_chance = 1.0
 
-[node name="NpcCar4" parent="Start/Node3D4/Cars" index="3"]
+[node name="NpcCar4" parent="Start/Node3D4/Cars" parent_id_path=PackedInt32Array(1010307045, 366070399) index="3" unique_id=1278205375]
 car_chance = 1.0
 
-[node name="Node3D2" parent="Start" instance=ExtResource("3_vice7")]
+[node name="Node3D2" parent="Start" unique_id=1826042534 instance=ExtResource("3_vice7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
-[node name="NpcCar" parent="Start/Node3D2/Cars" index="0"]
+[node name="NpcCar" parent="Start/Node3D2/Cars" parent_id_path=PackedInt32Array(1826042534, 366070399) index="0" unique_id=792393923]
 car_chance = 1.0
 
-[node name="NpcCar2" parent="Start/Node3D2/Cars" index="1"]
+[node name="NpcCar2" parent="Start/Node3D2/Cars" parent_id_path=PackedInt32Array(1826042534, 366070399) index="1" unique_id=207266898]
 car_chance = 1.0
 
-[node name="NpcCar3" parent="Start/Node3D2/Cars" index="2"]
+[node name="NpcCar3" parent="Start/Node3D2/Cars" parent_id_path=PackedInt32Array(1826042534, 366070399) index="2" unique_id=2129793448]
 car_chance = 1.0
 
-[node name="NpcCar4" parent="Start/Node3D2/Cars" index="3"]
+[node name="NpcCar4" parent="Start/Node3D2/Cars" parent_id_path=PackedInt32Array(1826042534, 366070399) index="3" unique_id=1278205375]
 car_chance = 1.0
 
-[node name="Node3D3" parent="Start" instance=ExtResource("3_vice7")]
+[node name="Node3D3" parent="Start" unique_id=1827381176 instance=ExtResource("3_vice7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="Cars" type="Node3D" parent="." groups=["CarHolder"]]
+[node name="Cars" type="Node3D" parent="." unique_id=1011915394 groups=["CarHolder"]]
 
 [editable path="Start/Node3D"]
 [editable path="Start/Node3D4"]
