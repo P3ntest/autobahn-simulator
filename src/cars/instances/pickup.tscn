@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1n7gagp4eypv"]
 
 [ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_8c435"]
+[ext_resource type="Resource" uid="uid://ci8exte3ienc" path="res://src/cars/skins/variants/simple_car.tres" id="2_4i15s"]
 [ext_resource type="PackedScene" uid="uid://bh6n567q160hb" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Pickup/Pickup.fbx" id="2_mxl5o"]
 [ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="3_mxl5o"]
 
@@ -9,6 +10,7 @@ size = Vector3(2.23006, 2.20351, 4.9550953)
 
 [node name="CarInstance" type="Node" unique_id=1387338154 node_paths=PackedStringArray("head_lights", "wheels", "main_mesh")]
 script = ExtResource("1_8c435")
+skin_variants = ExtResource("2_4i15s")
 head_lights = NodePath("Headlights")
 wheels = [NodePath("Pickup/Pickup wheel rear right"), NodePath("Pickup/Pickup wheel front left"), NodePath("Pickup/Pickup wheel rear left"), NodePath("Pickup/Pickup wheel front right")]
 main_mesh = NodePath("Pickup/Pickup")

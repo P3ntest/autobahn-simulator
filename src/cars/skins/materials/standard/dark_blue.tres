@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjmjfqm1kt86l"]
+
+[resource]
+resource_name = "body dark blue"
+albedo_color = Color(0, 0.05490197, 0.30588242, 1)

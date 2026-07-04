@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://bs02jt7ug4bax"]
 
 [ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_wmxdb"]
+[ext_resource type="Resource" uid="uid://ci8exte3ienc" path="res://src/cars/skins/variants/simple_car.tres" id="2_aqgyv"]
 [ext_resource type="PackedScene" uid="uid://b8a0gh40ympsf" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Van/Van.fbx" id="2_i5ctt"]
+[ext_resource type="Material" uid="uid://cjmjfqm1kt86l" path="res://src/cars/skins/materials/standard/dark_blue.tres" id="3_f0fkg"]
 [ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="3_i5ctt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0fkg"]
 size = Vector3(2.14248, 2.67703, 5.90902)
 
-[node name="CarInstance" type="Node" unique_id=1677595640 node_paths=PackedStringArray("head_lights")]
+[node name="CarInstance" type="Node" unique_id=1677595640 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_wmxdb")
+skin_variants = ExtResource("2_aqgyv")
 head_lights = NodePath("Headlights")
+main_mesh = NodePath("Van/Van")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1720955672]
@@ -19,5 +23,10 @@ shape = SubResource("BoxShape3D_f0fkg")
 [node name="Van" parent="." unique_id=1727341801 instance=ExtResource("2_i5ctt")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0069360957, 0, -0.120172)
 
+[node name="Van" parent="Van" index="0" unique_id=557503375]
+surface_material_override/0 = ExtResource("3_f0fkg")
+
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("3_i5ctt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8998041, -3.3119612)
+
+[editable path="Van"]

@@ -7,9 +7,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy5ut"]
 size = Vector3(2.17013, 1.98698, 10.266)
 
-[node name="CarInstance" type="Node" unique_id=852956189 node_paths=PackedStringArray("head_lights")]
+[node name="CarInstance" type="Node" unique_id=852956189 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_30drw")
 head_lights = NodePath("Headlights")
+main_mesh = NodePath("Limousine/Limousine")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="HeadlightPosition" type="Marker3D" parent="." unique_id=334023509]
@@ -24,3 +25,5 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("3_fild6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9556453, -5.3223057)
+
+[editable path="Limousine"]

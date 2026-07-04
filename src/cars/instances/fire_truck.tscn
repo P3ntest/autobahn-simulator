@@ -10,11 +10,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tl7im"]
 size = Vector3(2.74222, 3.64021, 9.36306)
 
-[node name="CarInstance" type="Node" unique_id=1284842532 node_paths=PackedStringArray("head_lights", "sound")]
+[node name="CarInstance" type="Node" unique_id=1284842532 node_paths=PackedStringArray("head_lights", "sound", "main_mesh")]
 script = ExtResource("1_h7idv")
 head_lights = NodePath("Headlights")
 has_so_si = true
 sound = NodePath("WeeWoo")
+main_mesh = NodePath("Firetruck/Firetruck")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=792685116]
@@ -56,3 +57,5 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("6_vxebd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63965106, -4.724313)
+
+[editable path="Firetruck"]

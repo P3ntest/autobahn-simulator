@@ -1,8 +1,10 @@
 class_name CarInstance
 extends Node
 
-@export var head_lights: Node3D
+@export var skin_variants: SkinVariants
 
+@export_group("Headlights")
+@export var head_lights: Node3D
 
 @export_group("Wheels")
 @export var wheel_radius: float = 0.3
@@ -20,6 +22,11 @@ extends Node
 func _ready() -> void:
 	if head_lights:
 		head_lights.visible = false
+
+	if skin_variants and main_mesh:
+		var variant = skin_variants.main_materials.pick_random()
+		if variant:
+			main_mesh.set_surface_override_material(body_surface_slot, variant)
 
 func reset() -> void:
 	# Reset the car instance to its initial state

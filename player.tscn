@@ -505,6 +505,7 @@ shape = SubResource("BoxShape3D_vfqqb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26569)
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=1725856658]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.909904, 0.41482, 0, -0.41482, 0.909904, 0, 5.05911, 9.16143)
 
 [node name="BreakLights" type="Node3D" parent="." unique_id=789335073]

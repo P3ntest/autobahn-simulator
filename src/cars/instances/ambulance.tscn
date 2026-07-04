@@ -9,11 +9,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ggabd"]
 size = Vector3(2.4175, 2.84279, 5.89783)
 
-[node name="CarInstance" type="Node" unique_id=1035187055 node_paths=PackedStringArray("head_lights", "sound")]
+[node name="CarInstance" type="Node" unique_id=1035187055 node_paths=PackedStringArray("head_lights", "sound", "main_mesh")]
 script = ExtResource("1_vaap3")
 head_lights = NodePath("Headlights")
 has_so_si = true
 sound = NodePath("WeeWoo")
+main_mesh = NodePath("Ambulance/Ambulance")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=307648472]
@@ -62,3 +63,5 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("5_vaap3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95412457, -3.3149457)
+
+[editable path="Ambulance"]

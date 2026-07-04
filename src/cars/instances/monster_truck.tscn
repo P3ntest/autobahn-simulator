@@ -2,15 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_infft"]
 [ext_resource type="Script" uid="uid://cd2v84h2usci0" path="res://spawn_chance.gd" id="2_ffb7t"]
+[ext_resource type="Resource" uid="uid://ci8exte3ienc" path="res://src/cars/skins/variants/simple_car.tres" id="2_yyyes"]
 [ext_resource type="PackedScene" uid="uid://b384s6ayvjy5y" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Monster Truck/Monster Truck.fbx" id="3_p3nwn"]
 [ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="4_ffb7t"]
+[ext_resource type="Material" uid="uid://c7il3vbp2rwr" path="res://src/cars/skins/materials/standard/light_blue.tres" id="5_ks5lp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yyyes"]
 size = Vector3(4.15787, 3.18184, 5.38999)
 
-[node name="CarInstance" type="Node" unique_id=1026380314 node_paths=PackedStringArray("head_lights")]
+[node name="CarInstance" type="Node" unique_id=1026380314 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_infft")
+skin_variants = ExtResource("2_yyyes")
 head_lights = NodePath("Headlights")
+main_mesh = NodePath("Monster Truck/Monster Truck")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2071997662]
@@ -24,5 +28,10 @@ spawn_chance = 0.1
 [node name="Monster Truck" parent="." unique_id=1257008063 instance=ExtResource("3_p3nwn")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.023455596, 0, 0.0868575)
 
+[node name="Monster Truck" parent="Monster Truck" index="0" unique_id=1696116868]
+surface_material_override/0 = ExtResource("5_ks5lp")
+
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("4_ffb7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1990178, -3.12297)
+
+[editable path="Monster Truck"]

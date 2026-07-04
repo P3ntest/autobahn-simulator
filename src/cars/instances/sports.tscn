@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_5k58b"]
 [ext_resource type="PackedScene" uid="uid://bq4wf6tfu2jdo" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Sports/Sports.fbx" id="2_6s1al"]
+[ext_resource type="Resource" uid="uid://ci8exte3ienc" path="res://src/cars/skins/variants/simple_car.tres" id="2_fwjle"]
 [ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="3_6s1al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwjle"]
 size = Vector3(2.24165, 2.00718, 5.60924)
 
-[node name="CarInstance" type="Node" unique_id=1567512090 node_paths=PackedStringArray("head_lights")]
+[node name="CarInstance" type="Node" unique_id=1567512090 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_5k58b")
+skin_variants = ExtResource("2_fwjle")
 head_lights = NodePath("Headlights")
+main_mesh = NodePath("Sports/Sports")
 metadata/_custom_type_script = "uid://cpodksi0716p8"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1044251951]
@@ -21,3 +24,5 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 
 [node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("3_6s1al")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80818105, -3.2790885)
+
+[editable path="Sports"]

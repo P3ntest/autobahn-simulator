@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkinVariants" format=3 uid="uid://ci8exte3ienc"]
+
+[ext_resource type="Material" uid="uid://pe0ih88yce8h" path="res://src/cars/skins/materials/standard/black.tres" id="1_178ts"]
+[ext_resource type="Material" uid="uid://cqcubbl7572dn" path="res://src/cars/skins/materials/standard/blue.tres" id="2_ffmn6"]
+[ext_resource type="Material" uid="uid://cjmjfqm1kt86l" path="res://src/cars/skins/materials/standard/dark_blue.tres" id="3_l5ujq"]
+[ext_resource type="Material" uid="uid://chwub4i2p5ktm" path="res://src/cars/skins/materials/standard/dark_green.tres" id="4_orexn"]
+[ext_resource type="Material" uid="uid://2j6fss5tnym" path="res://src/cars/skins/materials/standard/dark_red.tres" id="5_h1eb4"]
+[ext_resource type="Material" uid="uid://c7il3vbp2rwr" path="res://src/cars/skins/materials/standard/light_blue.tres" id="6_7tfab"]
+[ext_resource type="Material" uid="uid://b5e8xfylalto6" path="res://src/cars/skins/materials/standard/red.tres" id="7_yq2o8"]
+[ext_resource type="Material" uid="uid://vdscqn6b7h3t" path="res://src/cars/skins/materials/standard/white.tres" id="8_knvqr"]
+[ext_resource type="Material" uid="uid://bmqbm5o14kgxx" path="res://src/cars/skins/materials/standard/yellow.tres" id="9_n2ehe"]
+[ext_resource type="Script" uid="uid://cvj56yclma1j4" path="res://src/cars/skins/skin_variants.gd" id="10_h5483"]
+
+[resource]
+script = ExtResource("10_h5483")
+main_materials = Array[BaseMaterial3D]([ExtResource("1_178ts"), ExtResource("2_ffmn6"), ExtResource("3_l5ujq"), ExtResource("4_orexn"), ExtResource("5_h1eb4"), ExtResource("6_7tfab"), ExtResource("7_yq2o8"), ExtResource("8_knvqr"), ExtResource("9_n2ehe")])
+metadata/_custom_type_script = "uid://cvj56yclma1j4"

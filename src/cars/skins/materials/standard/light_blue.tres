@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c7il3vbp2rwr"]
+
+[resource]
+resource_name = "body light blue"
+albedo_color = Color(0.019607842, 0.54117656, 0.819608, 1)
