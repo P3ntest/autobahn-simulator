@@ -14,11 +14,10 @@ albedo_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
 size = Vector3(21.97754, 2.3538818, 212.37695)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mq0g"]
-albedo_color = Color(0.0745098, 0.427451, 0.0823529, 1)
-metallic_specular = 1.0
+albedo_color = Color(0.06323925, 0.3824037, 0.070157416, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8j116"]
-size = Vector2(20, 200)
+size = Vector2(20, 1000)
 
 [node name="RoadPiece" type="Node3D" unique_id=1945420976 node_paths=PackedStringArray("npc_car_spawners")]
 script = ExtResource("1_l17q2")

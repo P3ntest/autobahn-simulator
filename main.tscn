@@ -31,8 +31,10 @@ sky_material = SubResource("ProceduralSkyMaterial_i67qg")
 [sub_resource type="Environment" id="Environment_se8kp"]
 background_mode = 2
 sky = SubResource("Sky_p0ee3")
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_sky_affect = 0.0
 
 [sub_resource type="Resource" id="Resource_8j116"]
 script = ExtResource("5_272bh")

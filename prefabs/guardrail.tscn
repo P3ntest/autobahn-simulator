@@ -3,9 +3,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bam3cwv4eve1u" path="res://assets/guardrail_blender/guardrail_GuardrailMesh.res" id="1_iechv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32orf"]
-albedo_color = Color(0.7162962, 0.7162962, 0.7162962, 1)
+albedo_color = Color(0.5152081, 0.5152081, 0.515208, 1)
 metallic = 1.0
-roughness = 0.77
+metallic_specular = 0.68
+roughness = 0.32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j116"]
 size = Vector3(10.657959, 2.2966309, 0.8175049)
