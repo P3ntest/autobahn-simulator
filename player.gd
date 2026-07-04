@@ -24,6 +24,10 @@ var score = 0
 
 
 func _ready():
+	collision_layer |= 1 << 1  # Add to layer 2 (cars)
+
+	add_to_group("Player")
+
 	engine_sound.play()
 
 var current_speed = 30.0
@@ -122,25 +126,13 @@ func _physics_process(delta: float) -> void:
 	speedometer._set_speed(current_speed * 3.6)
 	$Score.text = "Score: " + str(round(score)) + "\nMax: " + str(ceil(highest_speed * 3.6)) + " km/h"
 
-func _on_close_detector_body_exited(body: NpcCar):
-	if dead:
-		return
-
-	var other_speed = -body.speed if body.is_opposite else body.speed
-	var speed_diff = current_speed - other_speed
-	if speed_diff > 45:
-		swoosh_sound.play()
-		speed_diff -= 45
-		score += pow(speed_diff, 1.7) * 0.1
-
 
 func _on_collision_detector_body_entered(body: Node3D):
+	print("body entered")
 	if (dead):
 		return
 
-	if (body.get_groups().has("NpcCar")):
-		print("hit car we ded")
-
+	if (body.get_groups().has("NpcCar")) or true:
 		$BreakLights.visible = false
 
 		# we want to replace this with a rigid body to fly away
@@ -173,7 +165,4 @@ func _on_collision_detector_body_entered(body: Node3D):
 		$DeathScreen.visible = true
 
 		dead = true
-	else:
-		print("hit something else")
-		print(body)
 		

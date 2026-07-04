@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c0ekkxi3vh1gp"]
+
+[ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_infft"]
+[ext_resource type="Script" uid="uid://cd2v84h2usci0" path="res://spawn_chance.gd" id="2_ffb7t"]
+[ext_resource type="PackedScene" uid="uid://b384s6ayvjy5y" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Monster Truck/Monster Truck.fbx" id="3_p3nwn"]
+[ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="4_ffb7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyyes"]
+size = Vector3(4.15787, 3.18184, 5.38999)
+
+[node name="CarInstance" type="Node" unique_id=1026380314 node_paths=PackedStringArray("head_lights")]
+script = ExtResource("1_infft")
+head_lights = NodePath("Headlights")
+metadata/_custom_type_script = "uid://cpodksi0716p8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2071997662]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.7252903e-09, 1.60216, 0)
+shape = SubResource("BoxShape3D_yyyes")
+
+[node name="SpawnChance" type="Node" parent="." unique_id=1235573573]
+script = ExtResource("2_ffb7t")
+spawn_chance = 0.1
+
+[node name="Monster Truck" parent="." unique_id=1257008063 instance=ExtResource("3_p3nwn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.023455596, 0, 0.0868575)
+
+[node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("4_ffb7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1990178, -3.12297)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cqq16q4i65plf"]
+
+[ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_5k58b"]
+[ext_resource type="PackedScene" uid="uid://bq4wf6tfu2jdo" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Sports/Sports.fbx" id="2_6s1al"]
+[ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="3_6s1al"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwjle"]
+size = Vector3(2.24165, 2.00718, 5.60924)
+
+[node name="CarInstance" type="Node" unique_id=1567512090 node_paths=PackedStringArray("head_lights")]
+script = ExtResource("1_5k58b")
+head_lights = NodePath("Headlights")
+metadata/_custom_type_script = "uid://cpodksi0716p8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1044251951]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.7939677e-09, 1.00893, 0)
+shape = SubResource("BoxShape3D_fwjle")
+
+[node name="Sports" parent="." unique_id=262032411 instance=ExtResource("2_6s1al")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0045028874, 0, 0.0619607)
+
+[node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("3_6s1al")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80818105, -3.2790885)

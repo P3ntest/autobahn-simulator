@@ -1,5 +1,4 @@
 extends AnimatableBody3D
-class_name NpcCar
 
 @export var car_chance: float = 0.25
 

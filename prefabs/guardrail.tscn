@@ -17,6 +17,8 @@ material_override = SubResource("StandardMaterial3D_32orf")
 mesh = ExtResource("1_iechv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=696089576 groups=["NpcCar"]]
+collision_layer = 5
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2112472434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1402588, -0.09124756)

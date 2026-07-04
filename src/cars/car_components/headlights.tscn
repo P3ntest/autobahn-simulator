@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://capx0mgmm4ttr"]
+
+[node name="Headlights" type="Marker3D" unique_id=1460165684]
+
+[node name="Spotleft" type="SpotLight3D" parent="." unique_id=1539338953]
+transform = Transform3D(-1, -7.6427436e-15, 8.742278e-08, 0, -1, -8.74228e-08, 8.742278e-08, -8.74228e-08, 1, -0.774, 0, 6.7665226e-08)
+spot_range = 100.0
+spot_attenuation = 0.0
+spot_angle = 10.0
+
+[node name="OmniLeft" type="OmniLight3D" parent="Spotleft" unique_id=687347729]
+light_energy = 2.0
+
+[node name="SpotRight" type="SpotLight3D" parent="." unique_id=842028521]
+transform = Transform3D(-1, -7.6427436e-15, 8.742278e-08, 0, -1, -8.74228e-08, 8.742278e-08, -8.74228e-08, 1, 0.774, 0, -6.7665226e-08)
+spot_range = 100.0
+spot_attenuation = 0.0
+spot_angle = 10.0
+
+[node name="OmniRight" type="OmniLight3D" parent="SpotRight" unique_id=530691344]
+light_energy = 2.0

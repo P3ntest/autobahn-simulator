@@ -1,14 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtgqhlvi0wlu7"]
+[gd_scene format=3 uid="uid://dtgqhlvi0wlu7"]
 
-[ext_resource type="Script" path="res://npc_car.gd" id="1_f6k1q"]
+[ext_resource type="Script" uid="uid://8itfjcqs0qgu" path="res://npc_car.gd" id="1_f6k1q"]
 [ext_resource type="PackedScene" uid="uid://nrtxmpa6sm4t" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Ambulance/Ambulance.fbx" id="2_e4vh8"]
 [ext_resource type="PackedScene" uid="uid://cayexsshd4kp7" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Sedan/Sedan.fbx" id="2_vln3h"]
-[ext_resource type="Script" path="res://spawn_chance.gd" id="3_hnt2a"]
+[ext_resource type="Script" uid="uid://cd2v84h2usci0" path="res://spawn_chance.gd" id="3_hnt2a"]
 [ext_resource type="PackedScene" uid="uid://c47fisbbiog3m" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Hatchback/Hatchback.fbx" id="3_uh0p4"]
 [ext_resource type="PackedScene" uid="uid://bh6n567q160hb" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Pickup/Pickup.fbx" id="4_i7o03"]
 [ext_resource type="PackedScene" uid="uid://b16ddp7vw8314" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Bus/Bus.fbx" id="5_cn0ip"]
 [ext_resource type="PackedScene" uid="uid://dxbkxph1ie6h2" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Firetruck/Firetruck.fbx" id="6_a4dxh"]
-[ext_resource type="Script" path="res://blue_light.gd" id="7_2gfro"]
+[ext_resource type="Script" uid="uid://txrdrx1l0png" path="res://blue_light.gd" id="7_2gfro"]
 [ext_resource type="PackedScene" uid="uid://br13ygrtamr00" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Limousine/Limousine.fbx" id="8_yxiib"]
 [ext_resource type="PackedScene" uid="uid://b384s6ayvjy5y" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Monster Truck/Monster Truck.fbx" id="9_7jicg"]
 [ext_resource type="AudioStream" uid="uid://blxwayfh8wrx8" path="res://assets/fire_siren.wav" id="10_ijf44"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://hddqn6d37gl0" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Truck/Truck.fbx" id="16_mtqtm"]
 [ext_resource type="PackedScene" uid="uid://b8a0gh40ympsf" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Van/Van.fbx" id="17_47tse"]
 [ext_resource type="PackedScene" uid="uid://cxthhmn1idqyw" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Truck with trailer/Truck with trailer.fbx" id="18_waihm"]
+[ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="20_4hbfi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewhyf"]
 size = Vector3(2.24165, 2.00718, 5.14202)
@@ -65,47 +66,47 @@ size = Vector3(2.14248, 2.67703, 5.90902)
 [sub_resource type="BoxShape3D" id="BoxShape3D_63bs0"]
 size = Vector3(2.71482, 3.19219, 12.922)
 
-[node name="NpcCar" type="AnimatableBody3D"]
+[node name="NpcCar" type="AnimatableBody3D" unique_id=1485133320]
 collision_layer = 19
 sync_to_physics = false
 script = ExtResource("1_f6k1q")
 
-[node name="Variants" type="Node3D" parent="."]
+[node name="Variants" type="Node3D" parent="." unique_id=241768226]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
 
-[node name="Sedan" parent="Variants" instance=ExtResource("2_vln3h")]
+[node name="Sedan" parent="Variants" unique_id=1977202557 instance=ExtResource("2_vln3h")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Sedan"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Sedan" unique_id=654901120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00450289, 1.01713, 0.0659617)
 shape = SubResource("BoxShape3D_ewhyf")
 
-[node name="Ambulance" parent="Variants" instance=ExtResource("2_e4vh8")]
+[node name="Ambulance" parent="Variants" unique_id=1883193321 instance=ExtResource("2_e4vh8")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Ambulance"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Ambulance" unique_id=849609169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00555171, 1.41626, -0.303104)
 shape = SubResource("BoxShape3D_3ucu1")
 
-[node name="SpawnChance" type="Node" parent="Variants/Ambulance"]
+[node name="SpawnChance" type="Node" parent="Variants/Ambulance" unique_id=457650196]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.1
 
-[node name="RedLight" type="OmniLight3D" parent="Variants/Ambulance"]
+[node name="RedLight" type="OmniLight3D" parent="Variants/Ambulance" unique_id=246912458]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, -0.679556, 2.97998, 0.722557)
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 10.0
 script = ExtResource("7_2gfro")
 offset = true
 
-[node name="RedLight2" type="OmniLight3D" parent="Variants/Ambulance"]
+[node name="RedLight2" type="OmniLight3D" parent="Variants/Ambulance" unique_id=808000415]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, 0.636589, 2.97998, 0.722557)
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 20.0
 light_size = 1.0
 script = ExtResource("7_2gfro")
 
-[node name="RedLight3" type="OmniLight3D" parent="Variants/Ambulance"]
+[node name="RedLight3" type="OmniLight3D" parent="Variants/Ambulance" unique_id=1200234981]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, -0.679556, 1.14657, -3.36593)
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 20.0
@@ -113,14 +114,14 @@ light_size = 1.0
 script = ExtResource("7_2gfro")
 offset = true
 
-[node name="RedLight4" type="OmniLight3D" parent="Variants/Ambulance"]
+[node name="RedLight4" type="OmniLight3D" parent="Variants/Ambulance" unique_id=2084826758]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, 0.636589, 1.14657, -3.36593)
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 20.0
 light_size = 1.0
 script = ExtResource("7_2gfro")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Variants/Ambulance"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Variants/Ambulance" unique_id=414218924]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, 0, 3.18998, 3.46641)
 stream = ExtResource("10_ijf44")
 volume_db = 2.0
@@ -128,41 +129,41 @@ unit_size = 12.0
 pitch_scale = 1.5
 doppler_tracking = 1
 
-[node name="Hatchback" parent="Variants" instance=ExtResource("3_uh0p4")]
+[node name="Hatchback" parent="Variants" unique_id=929370858 instance=ExtResource("3_uh0p4")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Hatchback"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Hatchback" unique_id=2060977799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00280011, 1.00893, 0.0991244)
 shape = SubResource("BoxShape3D_g2800")
 
-[node name="Pickup" parent="Variants" instance=ExtResource("4_i7o03")]
+[node name="Pickup" parent="Variants" unique_id=965838715 instance=ExtResource("4_i7o03")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Pickup"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Pickup" unique_id=732764005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81903e-05, 1.10667, 0.0991855)
 shape = SubResource("BoxShape3D_3cqwd")
 
-[node name="Bus" parent="Variants" instance=ExtResource("5_cn0ip")]
+[node name="Bus" parent="Variants" unique_id=975962779 instance=ExtResource("5_cn0ip")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Bus"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Bus" unique_id=1617858279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00537372, 2.02255, -0.0891004)
 shape = SubResource("BoxShape3D_3rgqu")
 
-[node name="SpawnChance" type="Node" parent="Variants/Bus"]
+[node name="SpawnChance" type="Node" parent="Variants/Bus" unique_id=356741109]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.2
 
-[node name="HeadlightPosition" type="Marker3D" parent="Variants/Bus"]
+[node name="HeadlightPosition" type="Marker3D" parent="Variants/Bus" unique_id=2015491351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36204, 6.79901)
 
-[node name="Firetruck" parent="Variants" instance=ExtResource("6_a4dxh")]
+[node name="Firetruck" parent="Variants" unique_id=62745893 instance=ExtResource("6_a4dxh")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Firetruck"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Firetruck" unique_id=1507337427]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00150359, 1.83134, 0.0668578)
 shape = SubResource("BoxShape3D_f20bg")
 
-[node name="BlueLight" type="OmniLight3D" parent="Variants/Firetruck"]
+[node name="BlueLight" type="OmniLight3D" parent="Variants/Firetruck" unique_id=1261982316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679556, 3.33515, 3.43457)
 light_color = Color(0.224177, 0.361756, 0.981336, 1)
 light_energy = 20.0
@@ -170,18 +171,18 @@ light_size = 1.0
 script = ExtResource("7_2gfro")
 offset = true
 
-[node name="BlueLight2" type="OmniLight3D" parent="Variants/Firetruck"]
+[node name="BlueLight2" type="OmniLight3D" parent="Variants/Firetruck" unique_id=107503753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636589, 3.33515, 3.43457)
 light_color = Color(0.224177, 0.361756, 0.981336, 1)
 light_energy = 20.0
 light_size = 1.0
 script = ExtResource("7_2gfro")
 
-[node name="SpawnChance" type="Node" parent="Variants/Firetruck"]
+[node name="SpawnChance" type="Node" parent="Variants/Firetruck" unique_id=549508593]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.1
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Variants/Firetruck"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Variants/Firetruck" unique_id=2024021924]
 transform = Transform3D(1.17647, 0, 0, 0, 1.17647, 0, 0, 0, 1.17647, 0, 3.18998, 3.46641)
 stream = ExtResource("10_ijf44")
 volume_db = 2.0
@@ -189,114 +190,95 @@ unit_size = 12.0
 pitch_scale = 0.9
 doppler_tracking = 1
 
-[node name="HeadlightPosition" type="Marker3D" parent="Variants/Firetruck"]
+[node name="HeadlightPosition" type="Marker3D" parent="Variants/Firetruck" unique_id=378796777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05213, 4.93427)
 
-[node name="Limousine" parent="Variants" instance=ExtResource("8_yxiib")]
+[node name="Limousine" parent="Variants" unique_id=1054159367 instance=ExtResource("8_yxiib")]
 visible = false
 
-[node name="HeadlightPosition" type="Marker3D" parent="Variants/Limousine"]
+[node name="HeadlightPosition" type="Marker3D" parent="Variants/Limousine" unique_id=508483656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05213, 5.72281)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Limousine"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Limousine" unique_id=1813460773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00407252, 1.00472, 0.518328)
 shape = SubResource("BoxShape3D_aq60d")
 
-[node name="SpawnChance" type="Node" parent="Variants/Limousine"]
+[node name="SpawnChance" type="Node" parent="Variants/Limousine" unique_id=897524875]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.1
 
-[node name="Monster Truck" parent="Variants" instance=ExtResource("9_7jicg")]
+[node name="Monster Truck" parent="Variants" unique_id=1612845752 instance=ExtResource("9_7jicg")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Monster Truck"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Monster Truck" unique_id=542389010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0234556, 1.60216, 0.0868575)
 shape = SubResource("BoxShape3D_tar3h")
 
-[node name="SpawnChance" type="Node" parent="Variants/Monster Truck"]
+[node name="SpawnChance" type="Node" parent="Variants/Monster Truck" unique_id=1657640512]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.1
 
-[node name="Roadster" parent="Variants" instance=ExtResource("12_snua2")]
+[node name="Roadster" parent="Variants" unique_id=1148867974 instance=ExtResource("12_snua2")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Roadster"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Roadster" unique_id=337431043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00450289, 1.00893, 0.0619607)
 shape = SubResource("BoxShape3D_b75qw")
 
-[node name="Sports" parent="Variants" instance=ExtResource("13_httt1")]
+[node name="Sports" parent="Variants" unique_id=1950122456 instance=ExtResource("13_httt1")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Sports"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Sports" unique_id=1833924835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00450289, 1.00893, 0.0619607)
 shape = SubResource("BoxShape3D_x5c5j")
 
-[node name="SUV" parent="Variants" instance=ExtResource("14_qfl10")]
+[node name="SUV" parent="Variants" unique_id=937611746 instance=ExtResource("14_qfl10")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/SUV"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/SUV" unique_id=1909561508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0069505, 1.00893, 0.0535243)
 shape = SubResource("BoxShape3D_c0oq8")
 
-[node name="Taxi" parent="Variants" instance=ExtResource("15_xlyh7")]
+[node name="Taxi" parent="Variants" unique_id=322638014 instance=ExtResource("15_xlyh7")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Taxi"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Taxi" unique_id=152085478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013963, 1.00893, 0.0534327)
 shape = SubResource("BoxShape3D_4qmcd")
 
-[node name="SpawnChance" type="Node" parent="Variants/Taxi"]
+[node name="SpawnChance" type="Node" parent="Variants/Taxi" unique_id=1271378846]
 script = ExtResource("3_hnt2a")
 spawn_chance = 0.5
 
-[node name="Truck" parent="Variants" instance=ExtResource("16_mtqtm")]
+[node name="Truck" parent="Variants" unique_id=535695119 instance=ExtResource("16_mtqtm")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Truck"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Truck" unique_id=1141411444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00425057, 1.60144, -0.0448909)
 shape = SubResource("BoxShape3D_ftmmx")
 
-[node name="Van" parent="Variants" instance=ExtResource("17_47tse")]
+[node name="Van" parent="Variants" unique_id=1070863535 instance=ExtResource("17_47tse")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Van"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Van" unique_id=429486886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00693609, 1.34386, -0.120172)
 shape = SubResource("BoxShape3D_xlfoc")
 
-[node name="Truck with trailer" parent="Variants" instance=ExtResource("18_waihm")]
+[node name="Truck with trailer" parent="Variants" unique_id=1006900987 instance=ExtResource("18_waihm")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Truck with trailer"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Variants/Truck with trailer" unique_id=2123110884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00694884, 1.60144, -0.0889604)
 shape = SubResource("BoxShape3D_63bs0")
 
-[node name="SpawnChance" type="Node" parent="Variants/Truck with trailer"]
+[node name="SpawnChance" type="Node" parent="Variants/Truck with trailer" unique_id=1920007305]
 script = ExtResource("3_hnt2a")
 spawn_chance = 2.0
 
-[node name="Headlights" type="Node3D" parent="."]
+[node name="Headlights" parent="." unique_id=1629013233 instance=ExtResource("20_4hbfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696629, 2.30579)
-visible = false
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Headlights"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0.774, 0, 0)
-spot_range = 100.0
-spot_attenuation = 0.0
-spot_angle = 10.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Headlights/SpotLight3D"]
-light_energy = 2.0
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Headlights"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.774, 0, 0)
-spot_range = 100.0
-spot_attenuation = 0.0
-spot_angle = 10.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Headlights/SpotLight3D2"]
-light_energy = 2.0
-
-[node name="FrontCast" type="RayCast3D" parent="."]
+[node name="FrontCast" type="RayCast3D" parent="." unique_id=794421798]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.458394, 1.94536)
 visible = false
 target_position = Vector3(0, -190, 0)

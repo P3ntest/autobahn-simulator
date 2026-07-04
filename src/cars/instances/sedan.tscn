@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://8bafx3am8wh7"]
+
+[ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_l1ltr"]
+[ext_resource type="PackedScene" uid="uid://cayexsshd4kp7" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Sedan/Sedan.fbx" id="2_8hv75"]
+[ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="3_4imo2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1ltr"]
+size = Vector3(2.24165, 2.00718, 5.14202)
+
+[node name="CarInstance" type="Node" unique_id=1712800177 node_paths=PackedStringArray("head_lights")]
+script = ExtResource("1_l1ltr")
+head_lights = NodePath("Headlights")
+metadata/_custom_type_script = "uid://cpodksi0716p8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=107919273]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.00450289, 1.01713, 0.0659617)
+shape = SubResource("BoxShape3D_l1ltr")
+
+[node name="Sedan" parent="." unique_id=740567225 instance=ExtResource("2_8hv75")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Headlights" parent="." unique_id=1460165684 instance=ExtResource("3_4imo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95708954, -2.9861913)
