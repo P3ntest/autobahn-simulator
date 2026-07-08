@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://b3osvs3sjedqd"]
 
 [ext_resource type="Script" uid="uid://ygle2ttgf37a" path="res://player.gd" id="1_re1pj"]
-[ext_resource type="PackedScene" uid="uid://citsii4cnewns" path="res://prefabs/decal.tscn" id="2_jc0ud"]
 [ext_resource type="PackedScene" uid="uid://spwihbba35yp" path="res://speedometer.tscn" id="2_ny632"]
 [ext_resource type="AudioStream" uid="uid://c71qb342mebb8" path="res://assets/engine-6000.wav" id="4_wr6na"]
 [ext_resource type="AudioStream" uid="uid://cvwfygygc8dnp" path="res://assets/braking.wav" id="5_hkyhv"]
@@ -454,14 +453,10 @@ size = Vector3(2.33063, 1.42273, 5.50348)
 [sub_resource type="LabelSettings" id="LabelSettings_o3lbg"]
 font_size = 100
 
-[sub_resource type="LabelSettings" id="LabelSettings_daclg"]
-font_size = 30
-
 [node name="PlayerCar" type="CharacterBody3D" unique_id=1548247283 groups=["Player"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_re1pj")
-break_decal = ExtResource("2_jc0ud")
 
 [node name="PhysicsCollider" type="CollisionShape3D" parent="." unique_id=1779580909]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.004325382, 0.88917637, -2.2499726)
@@ -533,21 +528,6 @@ collision_mask = 4
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.004325382, 0.88917637, -2.2499726)
 shape = SubResource("BoxShape3D_bftrm")
 
-[node name="DecalSpawners" type="Node3D" parent="." unique_id=801754933]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0633126, -2.26569)
-
-[node name="Marker3D" type="Marker3D" parent="DecalSpawners" unique_id=145917294]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86552, -0.0355816, -1.38651)
-
-[node name="Marker3D2" type="Marker3D" parent="DecalSpawners" unique_id=1531116825]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.911737, -0.0355816, -1.44954)
-
-[node name="Marker3D3" type="Marker3D" parent="DecalSpawners" unique_id=440259156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86552, -0.0355816, 1.51256)
-
-[node name="Marker3D4" type="Marker3D" parent="DecalSpawners" unique_id=1392684459]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.911737, -0.0355816, 1.44954)
-
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1085882665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425446, 1.23169, -2.26569)
 current = true
@@ -608,12 +588,5 @@ stream = ExtResource("6_a2w1h")
 [node name="SwooshSound" type="AudioStreamPlayer" parent="." unique_id=1205914174]
 stream = ExtResource("7_prw3r")
 
-[node name="Score" type="Label" parent="." unique_id=2015195017]
-offset_left = 27.0
-offset_top = 19.0
-offset_right = 67.0
-offset_bottom = 42.0
-text = "wdw"
-label_settings = SubResource("LabelSettings_daclg")
-
+[connection signal="speed_changed" from="." to="Speedometer" method="set_speed_ms"]
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]

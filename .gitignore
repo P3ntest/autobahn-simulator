@@ -6,3 +6,5 @@
 
 .dist
 !/.dist/.gdignore
+
+.DS_Store

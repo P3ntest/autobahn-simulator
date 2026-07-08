@@ -10,7 +10,12 @@ func _ready() -> void:
 
 var target_rotation = 0
 var current_speed = 0
-func _set_speed(speed: float) -> void:
+
+func set_speed_ms(speed_ms: float) -> void:
+	var speed_kmh = speed_ms * 3.6
+	set_speed_kmh(speed_kmh)
+
+func set_speed_kmh(speed: float) -> void:
 	# speedometer goes from 0 to 280 km/h in 3/4 rotation
 	target_rotation = (speed / 280) * 270
 	current_speed = speed
