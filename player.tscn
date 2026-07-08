@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3osvs3sjedqd"]
 
 [ext_resource type="Script" uid="uid://ygle2ttgf37a" path="res://player.gd" id="1_re1pj"]
-[ext_resource type="PackedScene" uid="uid://cjig03j75hrxu" path="res://src/cars/instances/fire_truck.tscn" id="2_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://cqq16q4i65plf" path="res://src/cars/instances/sports.tscn" id="2_dw050"]
 [ext_resource type="PackedScene" uid="uid://spwihbba35yp" path="res://speedometer.tscn" id="2_ny632"]
 [ext_resource type="Script" uid="uid://b1fmhwlpmanml" path="res://src/player/cam_controller.gd" id="3_dw050"]
 [ext_resource type="AudioStream" uid="uid://c71qb342mebb8" path="res://assets/engine-6000.wav" id="4_wr6na"]
@@ -13,7 +13,7 @@
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_re1pj")
-debug_set_car = ExtResource("2_1jxqw")
+debug_set_car = ExtResource("2_dw050")
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=996844204]
 top_level = true
