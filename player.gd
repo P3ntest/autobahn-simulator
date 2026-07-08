@@ -12,11 +12,24 @@ signal speed_changed(new_speed_ms: float)
 @onready var crash_sound: AudioStreamPlayer = $CrashSound
 @onready var swoosh_sound: AudioStreamPlayer = $SwooshSound
 
-@onready var break_lights: Node3D = $BreakLights
-
 var started = false
 
+var _car_instance: CarInstance
 
+@export var debug_set_car: PackedScene
+
+@onready var collision_detector: Area3D = $CollisionDetector
+
+func set_car(scene: PackedScene) -> void:
+	_car_instance = scene.instantiate()
+	add_child(_car_instance)
+	_car_instance.attach_to_parent(self)
+
+	for collider in collision_detector.get_children():
+		collider.queue_free()
+	for collider in _car_instance._colliders:
+		var duplicate_collider = collider.duplicate() as CollisionShape3D
+		collision_detector.add_child(duplicate_collider)
 
 func _ready():
 	collision_layer |= 1 << 1  # Add to layer 2 (cars)
@@ -24,6 +37,9 @@ func _ready():
 	add_to_group("Player")
 
 	engine_sound.play()
+
+	if debug_set_car:
+		set_car(debug_set_car)
 
 var current_speed = 30.0
 
@@ -35,7 +51,10 @@ var target_engine_pitch = 1.0
 var target_engine_volume = 1.0
 
 func start():
+	if started:
+		return
 	started = true
+	EventBus.player_take_control.emit()
 
 func _physics_process(delta: float) -> void:
 	if (dead):
@@ -52,17 +71,17 @@ func _physics_process(delta: float) -> void:
 
 	var velocity_delta = (Input.get_action_strength("accelerate") * acceleration_power + Input.get_action_strength("brake") * -breaking_power - default_decay) * delta
 
-	if not started and velocity_delta > 0:
+	if velocity_delta > 0:
 		start()
 
 	target_engine_pitch = .4 + max(velocity_delta, 0) * 1.2 + current_speed * 0.03
 	target_engine_volume = 1 + current_speed * 0.01
 
 	if (Input.is_action_pressed("brake")):
-		break_lights.visible = true
+		#break lights
 		break_sound.volume_db = linear_to_db(current_speed * 0.03)
 	else:
-		break_lights.visible = false
+		#break lights
 		break_sound.stop()
 
 	if (Input.is_action_just_pressed("brake")):
@@ -85,6 +104,9 @@ func _physics_process(delta: float) -> void:
 
 	var turning = Input.get_axis("right", "left") * .25
 
+	if abs(turning) > 0.01:
+		start()
+
 	current_turning_speed = lerp(current_turning_speed, turning, (current_speed / 10) * delta)
 
 	if Input.is_action_pressed("brake"):
@@ -105,6 +127,7 @@ func _physics_process(delta: float) -> void:
 
 	speed_changed.emit(current_speed)
 
+
 func _on_collision_detector_body_entered(_body: Node3D):
 	if (dead):
 		return
@@ -112,25 +135,16 @@ func _on_collision_detector_body_entered(_body: Node3D):
 	_death()
 
 func _death() -> void:
-	$BreakLights.visible = false
-
-	# we want to replace this with a rigid body to fly away
-	var roadster: Node3D = $Roadster
-	remove_child(roadster)
-
-	roadster.scale.z = 1 - min(current_speed / 800, 0.5)
+	EventBus.player_died.emit()
+	# break lights
 	
 	var rb = RigidBody3D.new()
+	rb.collision_mask |= 1 << 1
 	rb.transform = transform
 	rb.linear_velocity = velocity * 2 + Vector3(0, 2 + current_speed / 20, 0)
 	rb.angular_velocity = Vector3(randf(), randf(), randf()) * current_speed / 20
-	rb.add_child(roadster)
 
-	$PhysicsCollider.queue_free()
-
-	var collider = roadster.get_node("post_mortem_collider")
-	roadster.remove_child(collider)
-	rb.add_child(collider)
+	_car_instance.attach_to_parent(rb)
 
 	get_parent().add_child(rb)
 
@@ -140,7 +154,5 @@ func _death() -> void:
 	crash_sound.play()
 
 	speed_changed.emit(0)
-
-	$DeathScreen.visible = true
 
 	dead = true

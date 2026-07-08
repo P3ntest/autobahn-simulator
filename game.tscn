@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bldt30nysl8rc"]
+
+[ext_resource type="PackedScene" uid="uid://b3osvs3sjedqd" path="res://player.tscn" id="1_e36ub"]
+[ext_resource type="Script" uid="uid://dx00spk1hongq" path="res://src/road/road_pool.gd" id="2_hb5m1"]
+[ext_resource type="PackedScene" uid="uid://dyeivg0rkvi8q" path="res://road_piece.tscn" id="3_x5p1p"]
+[ext_resource type="Script" uid="uid://dql5cvhlky4yd" path="res://src/cars/car_pool.gd" id="4_qhcbd"]
+[ext_resource type="Script" uid="uid://bcsqbcfvbxnft" path="res://src/cars/car_pool_variant.gd" id="5_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://d1n7gagp4eypv" path="res://src/cars/instances/pickup.tscn" id="6_vaj68"]
+[ext_resource type="PackedScene" uid="uid://120swe8vlnhb" path="res://src/cars/instances/bus.tscn" id="7_i2p71"]
+[ext_resource type="PackedScene" uid="uid://bamv7jusoscul" path="res://src/cars/instances/hatchback.tscn" id="8_xa8c5"]
+[ext_resource type="PackedScene" uid="uid://btlva1q35g20y" path="res://src/cars/instances/limousine.tscn" id="9_5b14r"]
+[ext_resource type="PackedScene" uid="uid://c0ekkxi3vh1gp" path="res://src/cars/instances/monster_truck.tscn" id="10_bnpwn"]
+[ext_resource type="PackedScene" uid="uid://bmjb3yclxjjy0" path="res://src/cars/instances/roadster.tscn" id="11_36jdj"]
+[ext_resource type="PackedScene" uid="uid://8bafx3am8wh7" path="res://src/cars/instances/sedan.tscn" id="12_xfvwf"]
+[ext_resource type="PackedScene" uid="uid://cqq16q4i65plf" path="res://src/cars/instances/sports.tscn" id="13_dhpj7"]
+[ext_resource type="PackedScene" uid="uid://c14l0x5q47xre" path="res://src/cars/instances/suv.tscn" id="14_7knny"]
+[ext_resource type="PackedScene" uid="uid://cf6crlmgksck1" path="res://src/cars/instances/taxi.tscn" id="15_082n1"]
+[ext_resource type="PackedScene" uid="uid://sfnblbfpy6jw" path="res://src/cars/instances/truck_empty.tscn" id="16_xex6t"]
+[ext_resource type="PackedScene" uid="uid://cg4uexiixkjfr" path="res://src/cars/instances/truck_trailer.tscn" id="17_aa0lp"]
+[ext_resource type="PackedScene" uid="uid://bs02jt7ug4bax" path="res://src/cars/instances/van.tscn" id="18_iu0sx"]
+[ext_resource type="PackedScene" uid="uid://cjig03j75hrxu" path="res://src/cars/instances/fire_truck.tscn" id="19_4v2jo"]
+[ext_resource type="PackedScene" uid="uid://dqr4co4lm7ypy" path="res://src/cars/instances/ambulance.tscn" id="20_l1i01"]
+[ext_resource type="Script" uid="uid://dkg3805ey5j30" path="res://src/stats/stats_collector.gd" id="21_hb5m1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i67qg"]
+sky_top_color = Color(0.196102, 0.611496, 0.947097, 1)
+ground_bottom_color = Color(0.695878, 0.628376, 0.550752, 1)
+
+[sub_resource type="Sky" id="Sky_p0ee3"]
+sky_material = SubResource("ProceduralSkyMaterial_i67qg")
+
+[sub_resource type="Environment" id="Environment_se8kp"]
+background_mode = 2
+sky = SubResource("Sky_p0ee3")
+tonemap_mode = 3
+glow_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_sky_affect = 0.0
+
+[sub_resource type="Resource" id="Resource_8j116"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("6_vaj68")
+
+[sub_resource type="Resource" id="Resource_kq58d"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("7_i2p71")
+spawn_chance = 0.2
+
+[sub_resource type="Resource" id="Resource_dnpgb"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("8_xa8c5")
+
+[sub_resource type="Resource" id="Resource_vcgdd"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("9_5b14r")
+spawn_chance = 0.1
+
+[sub_resource type="Resource" id="Resource_0lcho"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("10_bnpwn")
+spawn_chance = 0.1
+
+[sub_resource type="Resource" id="Resource_7go0s"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("11_36jdj")
+
+[sub_resource type="Resource" id="Resource_ad1rc"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("12_xfvwf")
+
+[sub_resource type="Resource" id="Resource_7wqlh"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("13_dhpj7")
+
+[sub_resource type="Resource" id="Resource_jouq2"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("14_7knny")
+
+[sub_resource type="Resource" id="Resource_ox0t4"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("15_082n1")
+spawn_chance = 0.5
+
+[sub_resource type="Resource" id="Resource_xvs5a"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("16_xex6t")
+spawn_chance = 0.7
+
+[sub_resource type="Resource" id="Resource_ry6lm"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("17_aa0lp")
+spawn_chance = 3.0
+
+[sub_resource type="Resource" id="Resource_vhppt"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("18_iu0sx")
+
+[sub_resource type="Resource" id="Resource_h7idv"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("19_4v2jo")
+spawn_chance = 0.1
+
+[sub_resource type="Resource" id="Resource_vxebd"]
+script = ExtResource("5_f1jbl")
+prefab = ExtResource("20_l1i01")
+spawn_chance = 0.1
+
+[node name="GameScene" type="Node3D" unique_id=1131190934]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=985353041]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=80578562]
+environment = SubResource("Environment_se8kp")
+
+[node name="PlayerCar" parent="." unique_id=1876250730 instance=ExtResource("1_e36ub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8970957, 0.152795, 1.87671)
+
+[node name="RoadPool" type="Node3D" parent="." unique_id=688234735]
+script = ExtResource("2_hb5m1")
+road_piece_scene = ExtResource("3_x5p1p")
+metadata/_custom_type_script = "uid://dx00spk1hongq"
+
+[node name="CarPool" type="Node3D" parent="." unique_id=1761916010 groups=["CarPool"]]
+script = ExtResource("4_qhcbd")
+car_instances = Array[ExtResource("5_f1jbl")]([SubResource("Resource_8j116"), SubResource("Resource_kq58d"), SubResource("Resource_dnpgb"), SubResource("Resource_vcgdd"), SubResource("Resource_0lcho"), SubResource("Resource_7go0s"), SubResource("Resource_ad1rc"), SubResource("Resource_7wqlh"), SubResource("Resource_jouq2"), SubResource("Resource_ox0t4"), SubResource("Resource_xvs5a"), SubResource("Resource_ry6lm"), SubResource("Resource_vhppt"), SubResource("Resource_h7idv"), SubResource("Resource_vxebd")])
+metadata/_custom_type_script = "uid://dql5cvhlky4yd"
+
+[node name="StatsCollector" type="Node" parent="." unique_id=1651212509 node_paths=PackedStringArray("player")]
+script = ExtResource("21_hb5m1")
+player = NodePath("../PlayerCar")
+metadata/_custom_type_script = "uid://dkg3805ey5j30"

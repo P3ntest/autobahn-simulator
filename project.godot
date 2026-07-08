@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Autobahn Simulator"
-run/main_scene="res://main.tscn"
+run/main_scene="uid://co2wby4lcbarc"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/stretch_mode=0
 boot_splash/image="res://assets/splash.png"
@@ -25,10 +25,20 @@ config/icon="res://assets/icon.svg"
 
 buses/default_bus_layout="uid://dr0g24ncgntqh"
 
+[autoload]
+
+EventBus="*uid://b18761344mr08"
+ControllerIcons="*uid://vm4iwwwsl778"
+
 [display]
 
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [global_group]
 

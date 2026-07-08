@@ -42,6 +42,8 @@ func _generate_car() -> Node3D:
 
     car.add_child(variant_instance)
 
+    variant_instance.set_random_skin()
+
     variant_instance.attach_to_parent(car)
 
     car.instance = variant_instance

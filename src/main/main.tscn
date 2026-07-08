@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://co2wby4lcbarc"]
+
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="1_mj6hg"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="2_bc5lw"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="3_j4df1"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="4_30cu5"]
+[ext_resource type="Script" uid="uid://buuw3s10xvpek" path="res://src/main/game_world_manager.gd" id="4_jkpqq"]
+[ext_resource type="PackedScene" uid="uid://bldt30nysl8rc" path="res://game.tscn" id="5_jqarl"]
+[ext_resource type="Script" uid="uid://dppxckhwjrgm0" path="res://src/main/event_manager.gd" id="7_frqgp"]
+[ext_resource type="Texture2D" uid="uid://casmdw1resubx" path="res://addons/controller_icons/assets/key/w.png" id="8_frqgp"]
+[ext_resource type="PackedScene" uid="uid://bpc803ccmqukk" path="res://src/death_screen/death_scene.tscn" id="9_2nke2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8j116"]
+font_size = 45
+
+[sub_resource type="Animation" id="Animation_frqgp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2nke2"]
+resource_name = "pulsing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_km7bn"]
+_data = {
+&"RESET": SubResource("Animation_frqgp"),
+&"pulsing": SubResource("Animation_2nke2")
+}
+
+[node name="Main" type="Node" unique_id=1983573346]
+
+[node name="StateChart" type="Node" parent="." unique_id=284095435]
+unique_name_in_owner = true
+script = ExtResource("1_mj6hg")
+track_in_editor = true
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=214074444]
+script = ExtResource("2_bc5lw")
+initial_state = NodePath("Game")
+
+[node name="Game" type="Node" parent="StateChart/Root" unique_id=1943838351]
+script = ExtResource("2_bc5lw")
+initial_state = NodePath("Menu")
+
+[node name="Menu" type="Node" parent="StateChart/Root/Game" unique_id=2145062424]
+script = ExtResource("2_bc5lw")
+initial_state = NodePath("MainMenu")
+
+[node name="MainMenu" type="Node" parent="StateChart/Root/Game/Menu" unique_id=1578747868]
+script = ExtResource("3_j4df1")
+
+[node name="Options" type="Node" parent="StateChart/Root/Game/Menu" unique_id=1132007544]
+script = ExtResource("3_j4df1")
+
+[node name="TakeControl" type="Node" parent="StateChart/Root/Game/Menu" unique_id=1925039151]
+script = ExtResource("4_30cu5")
+to = NodePath("../../Playing")
+event = &"player_take_control"
+delay_in_seconds = "0.0"
+
+[node name="Playing" type="Node" parent="StateChart/Root/Game" unique_id=120789154]
+script = ExtResource("2_bc5lw")
+initial_state = NodePath("Alive")
+
+[node name="Alive" type="Node" parent="StateChart/Root/Game/Playing" unique_id=847522187]
+script = ExtResource("3_j4df1")
+
+[node name="PlayerDied" type="Node" parent="StateChart/Root/Game/Playing/Alive" unique_id=664812605]
+script = ExtResource("4_30cu5")
+to = NodePath("../../Dead")
+event = &"player_died"
+delay_in_seconds = "0.0"
+
+[node name="Dead" type="Node" parent="StateChart/Root/Game/Playing" unique_id=1878707074]
+script = ExtResource("3_j4df1")
+
+[node name="Garage" type="Node" parent="StateChart/Root" unique_id=574259262]
+script = ExtResource("3_j4df1")
+
+[node name="GameWorldManager" type="Node" parent="." unique_id=872992555]
+script = ExtResource("4_jkpqq")
+scene = ExtResource("5_jqarl")
+
+[node name="EventManager" type="Node" parent="." unique_id=1950231847]
+script = ExtResource("7_frqgp")
+
+[node name="MainMenu" type="Control" parent="." unique_id=1660683894]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=61030162]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.5
+offset_top = -311.48
+offset_right = 192.5
+offset_bottom = -211.48001
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="MainMenu/HBoxContainer" unique_id=1446823924]
+layout_mode = 2
+text = "Press"
+label_settings = SubResource("LabelSettings_8j116")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/HBoxContainer" unique_id=1961824120]
+layout_mode = 2
+texture = ExtResource("8_frqgp")
+
+[node name="Label2" type="Label" parent="MainMenu/HBoxContainer" unique_id=304749024]
+layout_mode = 2
+text = "to start"
+label_settings = SubResource("LabelSettings_8j116")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/HBoxContainer" unique_id=2099359653]
+libraries/ = SubResource("AnimationLibrary_km7bn")
+autoplay = &"pulsing"
+
+[node name="DeathScene" parent="." unique_id=1618117601 instance=ExtResource("9_2nke2")]
+visible = false
+
+[connection signal="state_entered" from="StateChart/Root/Game" to="GameWorldManager" method="setup_world"]
+[connection signal="state_entered" from="StateChart/Root/Game/Menu" to="MainMenu" method="show"]
+[connection signal="state_exited" from="StateChart/Root/Game/Menu" to="MainMenu" method="hide"]
+[connection signal="state_entered" from="StateChart/Root/Game/Playing/Dead" to="EventManager" method="_on_dead_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Game/Playing/Dead" to="DeathScene" method="set_stats"]
+[connection signal="state_entered" from="StateChart/Root/Game/Playing/Dead" to="DeathScene" method="show"]
+[connection signal="state_exited" from="StateChart/Root/Game/Playing/Dead" to="DeathScene" method="hide"]

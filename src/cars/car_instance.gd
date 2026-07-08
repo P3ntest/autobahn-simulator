@@ -23,6 +23,7 @@ func _ready() -> void:
 	if head_lights:
 		head_lights.visible = false
 
+func set_random_skin() -> void:
 	if skin_variants and main_mesh:
 		var variant = skin_variants.main_materials.pick_random()
 		if variant:
@@ -55,9 +56,19 @@ func turn_wheels(turn: float) -> void:
 		wheel.rotate_x(radians)
 		wheel.rotation.x = fmod(wheel.rotation.x, TAU)  # Keep the rotation within 0 to 2π
 
+var _components: Array[Node] = []
+var _colliders: Array[CollisionShape3D] = []
+
 func attach_to_parent(new_parent: CollisionObject3D) -> void:
-	for child in get_children():
-		remove_child(child)
+	if _components.is_empty():
+		for child in get_children():
+			_components.append(child)
+			if child is CollisionShape3D:
+				_colliders.append(child)
+
+	for child in _components:
+		if child.get_parent():
+			child.get_parent().remove_child(child)
 		child.owner = null
 		new_parent.add_child(child)
 

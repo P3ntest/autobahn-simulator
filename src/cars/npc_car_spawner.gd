@@ -24,8 +24,6 @@ func attempt_spawn() -> void:
 
 	car.transform = spawn_transform
 
-	print("moving car to ", spawn_transform.origin)
-
 	car.speed = speed
 	car.is_opposite = is_opposite
 

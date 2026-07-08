@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://bpc803ccmqukk"]
+
+[ext_resource type="Script" uid="uid://bry8qipqlak5d" path="res://src/death_screen/death_scene.gd" id="1_7yjoh"]
+[ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://addons/controller_icons/assets/key/space.png" id="1_8nnvk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8j116"]
+size = Vector2(200, 500)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p800v"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yjoh"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_158rx"]
+font_size = 60
+
+[node name="DeathScene" type="Control" unique_id=1618117601 node_paths=PackedStringArray("image", "top_speed", "distance_traveled", "time_played")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7yjoh")
+image = NodePath("Picture/MarginContainer/VBoxContainer/TextureRect")
+top_speed = NodePath("GridContainer/Label2")
+distance_traveled = NodePath("GridContainer/Label4")
+time_played = NodePath("GridContainer/Label6")
+
+[node name="Background" type="ColorRect" parent="." unique_id=511625912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34117648, 0.34117648, 0.34117648, 0.69411767)
+
+[node name="Picture" type="PanelContainer" parent="." unique_id=1818201255]
+layout_mode = 1
+offset_left = 129.0
+offset_top = 75.0
+offset_right = 549.0
+offset_bottom = 554.0
+
+[node name="ColorRect" type="ColorRect" parent="Picture" unique_id=1408965326]
+layout_mode = 2
+color = Color(0.12225223, 0.12225223, 0.12225223, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Picture" unique_id=870834156]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Picture/MarginContainer" unique_id=906550053]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Picture/MarginContainer/VBoxContainer" unique_id=1138920700]
+custom_minimum_size = Vector2(400, 400)
+custom_maximum_size = Vector2(400, 400)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_8j116")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Picture/MarginContainer/VBoxContainer" unique_id=288539546]
+layout_mode = 2
+text = "Unlucky..."
+label_settings = SubResource("LabelSettings_p800v")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=402102066]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.5
+offset_top = -311.48
+offset_right = 192.5
+offset_bottom = -211.48001
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.1703246, 1.1703246)
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1235171047]
+layout_mode = 2
+text = "Press"
+label_settings = SubResource("LabelSettings_7yjoh")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1372502861]
+layout_mode = 2
+texture = ExtResource("1_8nnvk")
+
+[node name="Label2" type="Label" parent="HBoxContainer" unique_id=1344062315]
+layout_mode = 2
+text = "to restart"
+label_settings = SubResource("LabelSettings_7yjoh")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=102825269]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -904.0
+offset_top = 77.0
+offset_right = -45.0
+offset_bottom = 366.0
+grow_horizontal = 0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer" unique_id=1059108224]
+layout_mode = 2
+text = "Top Speed"
+label_settings = SubResource("LabelSettings_158rx")
+
+[node name="Label2" type="Label" parent="GridContainer" unique_id=1575046302]
+layout_mode = 2
+text = "312 Km/h"
+label_settings = SubResource("LabelSettings_158rx")
+
+[node name="Label3" type="Label" parent="GridContainer" unique_id=96525260]
+layout_mode = 2
+text = "Distance Travelled"
+label_settings = SubResource("LabelSettings_158rx")
+
+[node name="Label4" type="Label" parent="GridContainer" unique_id=1827928691]
+layout_mode = 2
+text = "6.3 Km"
+label_settings = SubResource("LabelSettings_158rx")
+
+[node name="Label5" type="Label" parent="GridContainer" unique_id=1060111229]
+layout_mode = 2
+text = "Time Survived"
+label_settings = SubResource("LabelSettings_158rx")
+
+[node name="Label6" type="Label" parent="GridContainer" unique_id=508404367]
+layout_mode = 2
+text = "4:30 min"
+label_settings = SubResource("LabelSettings_158rx")
