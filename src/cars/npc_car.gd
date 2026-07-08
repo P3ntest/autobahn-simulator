@@ -22,7 +22,7 @@ func _ready() -> void:
 	collision_layer = 1 << 1  # Add to layer 2 (cars)
 	collision_layer |= 1 << 2  # Add to layer 3 (killing zone)
 
-	instance.turn_on_so_si_if_has_sound()
+	instance.maybe_enable_so_si()
 
 	_setup_front_cast()
 

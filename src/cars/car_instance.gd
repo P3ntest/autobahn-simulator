@@ -1,6 +1,8 @@
 class_name CarInstance
 extends Node
 
+@export_range(0.0, 1.0, 0.01) var camera_distance: float = 0.0
+
 @export var skin_variants: SkinVariants
 
 @export_group("Headlights")
@@ -45,10 +47,6 @@ func toggle_headlights() -> void:
 		return
 	head_lights.visible = not head_lights.visible
 
-func turn_on_so_si_if_has_sound() -> void:
-	if has_so_si and sound != null:
-		sound.play()
-
 func turn_wheels(turn: float) -> void:
 	# the turn is in meters, so we need to convert it to radians
 	var radians = turn / wheel_radius
@@ -58,6 +56,7 @@ func turn_wheels(turn: float) -> void:
 
 var _components: Array[Node] = []
 var _colliders: Array[CollisionShape3D] = []
+var _blue_lights: Array[BlueLight] = []
 
 func attach_to_parent(new_parent: CollisionObject3D) -> void:
 	if _components.is_empty():
@@ -65,6 +64,8 @@ func attach_to_parent(new_parent: CollisionObject3D) -> void:
 			_components.append(child)
 			if child is CollisionShape3D:
 				_colliders.append(child)
+			if child is BlueLight:
+				_blue_lights.append(child)
 
 	for child in _components:
 		if child.get_parent():
@@ -74,3 +75,46 @@ func attach_to_parent(new_parent: CollisionObject3D) -> void:
 
 func set_body_material(material: Material) -> void:
 	main_mesh.set_surface_override_material(body_surface_slot, material)
+
+func maybe_enable_so_si() -> void:
+	if has_so_si:
+		if randf() < 0.5:
+			turn_on_so_si()
+		else:
+			turn_off_so_si()
+
+func check_has_so_si() -> bool:
+	return has_so_si
+
+func toggle_so_si() -> void:
+	if not has_so_si:
+		return
+	if _so_si_enabled:
+		turn_off_so_si()
+	else:
+		turn_on_so_si()
+
+var _so_si_enabled: bool = false
+func turn_on_so_si() -> void:
+	if not has_so_si:
+		return
+	_so_si_enabled = true
+	for blue_light in _blue_lights:
+		blue_light.enabled = true
+
+	sound.stop()
+	sound.play()
+
+func turn_off_so_si() -> void:
+	if not has_so_si:
+		return
+	_so_si_enabled = false
+	for blue_light in _blue_lights:
+		blue_light.enabled = false
+
+	sound.stop()
+	
+
+func set_player() -> void:
+	if sound:
+		sound.doppler_tracking = AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED

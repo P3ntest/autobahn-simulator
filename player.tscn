@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b3osvs3sjedqd"]
 
 [ext_resource type="Script" uid="uid://ygle2ttgf37a" path="res://player.gd" id="1_re1pj"]
-[ext_resource type="PackedScene" uid="uid://dqr4co4lm7ypy" path="res://src/cars/instances/ambulance.tscn" id="2_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://cjig03j75hrxu" path="res://src/cars/instances/fire_truck.tscn" id="2_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://spwihbba35yp" path="res://speedometer.tscn" id="2_ny632"]
+[ext_resource type="Script" uid="uid://b1fmhwlpmanml" path="res://src/player/cam_controller.gd" id="3_dw050"]
 [ext_resource type="AudioStream" uid="uid://c71qb342mebb8" path="res://assets/engine-6000.wav" id="4_wr6na"]
 [ext_resource type="AudioStream" uid="uid://cvwfygygc8dnp" path="res://assets/braking.wav" id="5_hkyhv"]
 [ext_resource type="AudioStream" uid="uid://bc5fdf5xa0js1" path="res://assets/crash.wav" id="6_a2w1h"]
@@ -15,10 +16,19 @@ script = ExtResource("1_re1pj")
 debug_set_car = ExtResource("2_1jxqw")
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=996844204]
+top_level = true
+script = ExtResource("3_dw050")
+
+[node name="Low" type="Marker3D" parent="CamPivot" unique_id=809148742]
+transform = Transform3D(1, 0, 0, 0, 0.9099036, 0.41481975, 0, -0.41481978, 0.9099036, 0, 5.05911, 9.16143)
+
+[node name="High" type="Marker3D" parent="CamPivot" unique_id=1825567362]
+transform = Transform3D(1, 0, 0, 0, 0.9099036, 0.41481975, 0, -0.41481978, 0.9099036, 0, 8.478399, 12.309093)
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=1725856658]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.909904, 0.41482, 0, -0.41482, 0.909904, 0, 5.05911, 9.16143)
+fov = 50.0
 
 [node name="CollisionDetector" type="Area3D" parent="." unique_id=89368139]
 collision_layer = 0
@@ -56,5 +66,6 @@ stream = ExtResource("6_a2w1h")
 [node name="SwooshSound" type="AudioStreamPlayer" parent="." unique_id=1205914174]
 stream = ExtResource("7_prw3r")
 
+[connection signal="camera_position_changed" from="." to="CamPivot" method="set_cam_position"]
 [connection signal="speed_changed" from="." to="Speedometer" method="set_speed_ms"]
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]

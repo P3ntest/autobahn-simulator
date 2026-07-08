@@ -10,6 +10,7 @@ size = Vector3(3.14445, 4.08669, 13.3428)
 
 [node name="Bus" type="Node" unique_id=1703265161 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_5y8uo")
+camera_distance = 1.0
 skin_variants = ExtResource("2_iggw8")
 head_lights = NodePath("Headlights")
 main_mesh = NodePath("Bus/Bus")

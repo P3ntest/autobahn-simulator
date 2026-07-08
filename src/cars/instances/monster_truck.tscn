@@ -12,6 +12,7 @@ size = Vector3(4.15787, 3.18184, 5.38999)
 
 [node name="CarInstance" type="Node" unique_id=1026380314 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_infft")
+camera_distance = 0.47
 skin_variants = ExtResource("2_yyyes")
 head_lights = NodePath("Headlights")
 main_mesh = NodePath("Monster Truck/Monster Truck")

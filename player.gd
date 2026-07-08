@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 signal speed_changed(new_speed_ms: float)
+signal camera_position_changed(new_position: float)
 
 
 @onready var start_rotation = rotation.y
@@ -24,6 +25,9 @@ func set_car(scene: PackedScene) -> void:
 	_car_instance = scene.instantiate()
 	add_child(_car_instance)
 	_car_instance.attach_to_parent(self)
+	_car_instance.set_player()
+
+	camera_position_changed.emit(_car_instance.camera_distance)
 
 	for collider in collision_detector.get_children():
 		collider.queue_free()
@@ -56,12 +60,19 @@ func start():
 	started = true
 	EventBus.player_take_control.emit()
 
+func _car_effects_process() -> void:
+	if Input.is_action_just_pressed("sosi"):
+		if _car_instance.check_has_so_si():
+			_car_instance.toggle_so_si()
+
 func _physics_process(delta: float) -> void:
 	if (dead):
 		if (Input.is_action_just_pressed("restart")):
 			get_tree().reload_current_scene()
 		cam.fov = lerp(cam.fov, 40.0, 12 * delta)
 		return
+
+	_car_effects_process()
 
 	# this should drop off with speed like in real life
 	var acceleration_power = 1300 / (current_speed + 300)
@@ -87,7 +98,7 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("brake")):
 		break_sound.play()
 
-	var target_fov = 65 + ((velocity_delta * 2) / delta) + current_speed * 0.5
+	var target_fov = 35 + ((velocity_delta * 2) / delta) + current_speed * 0.5
 
 	current_speed += velocity_delta
 	current_speed = max(0, current_speed)
@@ -116,7 +127,6 @@ func _physics_process(delta: float) -> void:
 
 
 	rotation.y = current_turning_speed + start_rotation
-	$CamPivot.rotation.y = -rotation.y + start_rotation
 
 	cam.fov = lerp(cam.fov, target_fov, 1.5 * delta)
 
@@ -127,7 +137,6 @@ func _physics_process(delta: float) -> void:
 
 	speed_changed.emit(current_speed)
 
-
 func _on_collision_detector_body_entered(_body: Node3D):
 	if (dead):
 		return
@@ -137,6 +146,8 @@ func _on_collision_detector_body_entered(_body: Node3D):
 func _death() -> void:
 	EventBus.player_died.emit()
 	# break lights
+
+	_car_instance.turn_off_so_si()
 	
 	var rb = RigidBody3D.new()
 	rb.collision_mask |= 1 << 1

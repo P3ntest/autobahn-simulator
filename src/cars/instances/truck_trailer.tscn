@@ -9,6 +9,7 @@ size = Vector3(2.71482, 3.19219, 12.922)
 
 [node name="CarInstance" type="Node" unique_id=1666130381 node_paths=PackedStringArray("head_lights", "main_mesh")]
 script = ExtResource("1_lqwq5")
+camera_distance = 1.0
 head_lights = NodePath("Headlights")
 main_mesh = NodePath("Truck with trailer/Truck with trailer")
 metadata/_custom_type_script = "uid://cpodksi0716p8"

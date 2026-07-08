@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cpodksi0716p8" path="res://src/cars/car_instance.gd" id="1_h7idv"]
 [ext_resource type="Script" uid="uid://txrdrx1l0png" path="res://blue_light.gd" id="2_vxebd"]
 [ext_resource type="Script" uid="uid://cd2v84h2usci0" path="res://spawn_chance.gd" id="3_0vvg5"]
-[ext_resource type="AudioStream" uid="uid://blxwayfh8wrx8" path="res://assets/fire_siren.wav" id="4_jwajc"]
+[ext_resource type="AudioStream" uid="uid://bpeve7u5mwgyf" path="res://assets/audio/sirens/martin.wav" id="4_vxebd"]
 [ext_resource type="PackedScene" uid="uid://dxbkxph1ie6h2" path="res://assets/Free Low Poly Vehicles Pack by Rgsdev/Firetruck/Firetruck.fbx" id="5_c0575"]
 [ext_resource type="PackedScene" uid="uid://capx0mgmm4ttr" path="res://src/cars/car_components/headlights.tscn" id="6_vxebd"]
 
@@ -12,6 +12,7 @@ size = Vector3(2.74222, 3.64021, 9.36306)
 
 [node name="CarInstance" type="Node" unique_id=1284842532 node_paths=PackedStringArray("head_lights", "sound", "main_mesh")]
 script = ExtResource("1_h7idv")
+camera_distance = 1.0
 head_lights = NodePath("Headlights")
 has_so_si = true
 sound = NodePath("WeeWoo")
@@ -43,10 +44,7 @@ spawn_chance = 0.1
 
 [node name="WeeWoo" type="AudioStreamPlayer3D" parent="." unique_id=775011988]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.013821224, 3.18998, -3.2387364)
-stream = ExtResource("4_jwajc")
-volume_db = 2.0
-unit_size = 12.0
-pitch_scale = 0.9
+stream = ExtResource("4_vxebd")
 doppler_tracking = 1
 
 [node name="HeadlightPosition" type="Marker3D" parent="." unique_id=233628771]

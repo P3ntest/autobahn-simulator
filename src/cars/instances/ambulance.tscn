@@ -23,13 +23,15 @@ shape = SubResource("BoxShape3D_ggabd")
 
 [node name="RedLight" type="OmniLight3D" parent="." unique_id=1374745907]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6534171, 2.97998, -1.3292543)
-light_color = Color(0.807843, 0.101961, 0.117647, 1)
+visible = false
+light_color = Color(0, 0.41198903, 0.8795792, 1)
 light_energy = 10.0
 script = ExtResource("3_uvhe6")
 offset = true
 
 [node name="RedLight2" type="OmniLight3D" parent="." unique_id=1190570755]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6627279, 2.97998, -1.3292543)
+visible = false
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 20.0
 light_size = 1.0
@@ -37,6 +39,7 @@ script = ExtResource("3_uvhe6")
 
 [node name="RedLight3" type="OmniLight3D" parent="." unique_id=326125430]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.65341747, 1.14657, 2.759233)
+visible = false
 light_color = Color(0.807843, 0.101961, 0.117647, 1)
 light_energy = 20.0
 light_size = 1.0
@@ -45,13 +48,14 @@ offset = true
 
 [node name="RedLight4" type="OmniLight3D" parent="." unique_id=1353369920]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.66272753, 1.14657, 2.759233)
-light_color = Color(0.807843, 0.101961, 0.117647, 1)
+visible = false
+light_color = Color(0, 0.41198903, 0.8795792, 1)
 light_energy = 20.0
 light_size = 1.0
 script = ExtResource("3_uvhe6")
 
 [node name="WeeWoo" type="AudioStreamPlayer3D" parent="." unique_id=1384632143]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.026139112, 3.18998, -4.0731072)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.026139112, 2.6113951, -1.6292343)
 stream = ExtResource("4_n7aao")
 volume_db = 2.0
 unit_size = 12.0
